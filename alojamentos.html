@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alojamentos — Lethes Legacy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <div class="logo-mono"><em>L</em>L</div>
+      <div class="logo-sep"></div>
+      <div class="logo-words">
+        <span class="l-name">Lethes</span>
+        <span class="l-sub">Legacy</span>
+      </div>
+    </a>
+    <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="alojamentos.html" class="active">Alojamentos</a></li>
+      <li><a href="index.html#destinos">Destinos</a></li>
+      <li><a href="index.html#gestao">Gestão de AL</a></li>
+      <li><a href="index.html#experiencias">Experiências</a></li>
+      <li><a href="index.html#sobre">Sobre Nós</a></li>
+      <li><a href="index.html#contactos">Contactos</a></li>
+      <li class="nav-li-cta"><a href="https://wa.me/351927155336?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva." target="_blank" rel="noopener noreferrer" class="nav-wa-mobile">Reservar Agora</a></li>
+    </ul>
+    <a href="https://wa.me/351927155336?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva."
+       target="_blank" rel="noopener noreferrer" class="btn-nav">Reservar Agora</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"
+         style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80')"></div>
+    <p class="page-hero-tag">Boutique Stays &amp; Local Hospitality</p>
+    <h1 class="page-hero-title">Os Nossos Alojamentos</h1>
+  </section>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-btn active" data-filter="todos">Todos</button>
+    <button class="filter-btn" data-filter="casas" id="tab-casas">Casas</button>
+    <button class="filter-btn" data-filter="apartamentos" id="tab-apartamentos">Apartamentos</button>
+    <button class="filter-btn" data-filter="quartos" id="tab-quartos">Quartos</button>
+  </div>
+
+  <!-- LISTINGS -->
+  <section class="listings">
+    <div class="listings-grid">
+
+      <!-- ── CASAS ── -->
+
+      <div class="listing-card" data-type="casas">
+        <div class="listing-img-wrap"
+             style="background-color:#7a5618;background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80&fit=crop" alt="Villa dos Pinheiros" loading="lazy">
+          <span class="listing-type-badge">Casa</span>
+        </div>
+        <div class="listing-body">
+          <h3 class="listing-name">Villa dos Pinheiros</h3>
+          <p class="listing-location">Gerês, Norte de Portugal</p>
+          <div class="listing-amenities">
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M2 20v-6a2 2 0 012-2h16a2 2 0 012 2v6"/><path d="M2 14v-4a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>
+              4 quartos
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              8 hóspedes
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              Piscina
+            </span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">€250 <span>/noite</span></div>
+            <a href="https://wa.me/351927155336?text=Olá!%20Tenho%20interesse%20na%20Villa%20dos%20Pinheiros%20no%20Gerês.%20Podiam%20dar-me%20mais%20informações%20sobre%20disponibilidade%20e%20preços%3F"
+               target="_blank" rel="noopener noreferrer" class="btn-wa-listing">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Reservar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card" data-type="casas">
+        <div class="listing-img-wrap"
+             style="background-color:#5a3a10;background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80&fit=crop" alt="Casa da Ribeira" loading="lazy">
+          <span class="listing-type-badge">Casa</span>
+        </div>
+        <div class="listing-body">
+          <h3 class="listing-name">Casa da Ribeira</h3>
+          <p class="listing-location">Vale do Douro, Norte</p>
+          <div class="listing-amenities">
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M2 20v-6a2 2 0 012-2h16a2 2 0 012 2v6"/><path d="M2 14v-4a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>
+              3 quartos
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              6 hóspedes
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              Vista Rio
+            </span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">€180 <span>/noite</span></div>
+            <a href="https://wa.me/351927155336?text=Olá!%20Tenho%20interesse%20na%20Casa%20da%20Ribeira%20no%20Vale%20do%20Douro.%20Podiam%20dar-me%20mais%20informações%3F"
+               target="_blank" rel="noopener noreferrer" class="btn-wa-listing">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Reservar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card" data-type="casas">
+        <div class="listing-img-wrap"
+             style="background-color:#6a4820;background-image:url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=700&q=80&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=700&q=80&fit=crop" alt="Quinta das Oliveiras" loading="lazy">
+          <span class="listing-type-badge">Casa</span>
+        </div>
+        <div class="listing-body">
+          <h3 class="listing-name">Quinta das Oliveiras</h3>
+          <p class="listing-location">Alentejo</p>
+          <div class="listing-amenities">
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M2 20v-6a2 2 0 012-2h16a2 2 0 012 2v6"/><path d="M2 14v-4a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>
+              5 quartos
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              10 hóspedes
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              Piscina
+            </span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">€320 <span>/noite</span></div>
+            <a href="https://wa.me/351927155336?text=Olá!%20Tenho%20interesse%20na%20Quinta%20das%20Oliveiras%20no%20Alentejo.%20Podiam%20dar-me%20mais%20informações%3F"
+               target="_blank" rel="noopener noreferrer" class="btn-wa-listing">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Reservar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── APARTAMENTOS ── -->
+
+      <div class="listing-card" data-type="apartamentos">
+        <div class="listing-img-wrap"
+             style="background-color:#3a4a58;background-image:url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&q=80&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&q=80&fit=crop" alt="Apartamento Ribeira" loading="lazy">
+          <span class="listing-type-badge">Apartamento</span>
+        </div>
+        <div class="listing-body">
+          <h3 class="listing-name">Apartamento Ribeira</h3>
+          <p class="listing-location">Porto, Ribeira</p>
+          <div class="listing-amenities">
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M2 20v-6a2 2 0 012-2h16a2 2 0 012 2v6"/><path d="M2 14v-4a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>
+              2 quartos
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              4 hóspedes
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              Vista Rio
+            </span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">€120 <span>/noite</span></div>
+            <a href="https://wa.me/351927155336?text=Olá!%20Tenho%20interesse%20no%20Apartamento%20Ribeira%20no%20Porto.%20Podiam%20dar-me%20mais%20informações%3F"
+               target="_blank" rel="noopener noreferrer" class="btn-wa-listing">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Reservar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card" data-type="apartamentos">
+        <div class="listing-img-wrap"
+             style="background-color:#2a3a4a;background-image:url('https://images.unsplash.com/photo-1522708323590-d8b1baf48b8c?w=700&q=80&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1522708323590-d8b1baf48b8c?w=700&q=80&fit=crop" alt="Loft das Artes" loading="lazy">
+          <span class="listing-type-badge">Apartamento</span>
+        </div>
+        <div class="listing-body">
+          <h3 class="listing-name">Loft das Artes</h3>
+          <p class="listing-location">Lisboa, Bairro Alto</p>
+          <div class="listing-amenities">
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M2 20v-6a2 2 0 012-2h16a2 2 0 012 2v6"/><path d="M2 14v-4a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>
+              1 quarto
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              2 hóspedes
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              Centro
+            </span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">€95 <span>/noite</span></div>
+            <a href="https://wa.me/351927155336?text=Olá!%20Tenho%20interesse%20no%20Loft%20das%20Artes%20em%20Lisboa.%20Podiam%20dar-me%20mais%20informações%3F"
+               target="_blank" rel="noopener noreferrer" class="btn-wa-listing">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Reservar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card" data-type="apartamentos">
+        <div class="listing-img-wrap"
+             style="background-color:#3a4858;background-image:url('https://images.unsplash.com/photo-1484154218962-a197022b5858?w=700&q=80&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=700&q=80&fit=crop" alt="Apartamento Foz" loading="lazy">
+          <span class="listing-type-badge">Apartamento</span>
+        </div>
+        <div class="listing-body">
+          <h3 class="listing-name">Apartamento Foz</h3>
+          <p class="listing-location">Porto, Foz do Douro</p>
+          <div class="listing-amenities">
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M2 20v-6a2 2 0 012-2h16a2 2 0 012 2v6"/><path d="M2 14v-4a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>
+              2 quartos
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              4 hóspedes
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              Vista Mar
+            </span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">€150 <span>/noite</span></div>
+            <a href="https://wa.me/351927155336?text=Olá!%20Tenho%20interesse%20no%20Apartamento%20Foz%20no%20Porto.%20Podiam%20dar-me%20mais%20informações%3F"
+               target="_blank" rel="noopener noreferrer" class="btn-wa-listing">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Reservar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── QUARTOS ── -->
+
+      <div class="listing-card" data-type="quartos">
+        <div class="listing-img-wrap"
+             style="background-color:#5a4535;background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=80&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=80&fit=crop" alt="Quarto Douro View" loading="lazy">
+          <span class="listing-type-badge">Quarto</span>
+        </div>
+        <div class="listing-body">
+          <h3 class="listing-name">Quarto Douro View</h3>
+          <p class="listing-location">Peso da Régua, Douro</p>
+          <div class="listing-amenities">
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M2 20v-6a2 2 0 012-2h16a2 2 0 012 2v6"/><path d="M2 14v-4a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>
+              1 cama
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              2 hóspedes
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              Vista Rio
+            </span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">€85 <span>/noite</span></div>
+            <a href="https://wa.me/351927155336?text=Olá!%20Tenho%20interesse%20no%20Quarto%20Douro%20View%20no%20Peso%20da%20Régua.%20Podiam%20dar-me%20mais%20informações%3F"
+               target="_blank" rel="noopener noreferrer" class="btn-wa-listing">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Reservar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card" data-type="quartos">
+        <div class="listing-img-wrap"
+             style="background-color:#4a3828;background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80&fit=crop" alt="Quarto Jardim" loading="lazy">
+          <span class="listing-type-badge">Quarto</span>
+        </div>
+        <div class="listing-body">
+          <h3 class="listing-name">Quarto Jardim</h3>
+          <p class="listing-location">Sintra, Lisboa</p>
+          <div class="listing-amenities">
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M2 20v-6a2 2 0 012-2h16a2 2 0 012 2v6"/><path d="M2 14v-4a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>
+              1 cama
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              2 hóspedes
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              Jardim
+            </span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">€75 <span>/noite</span></div>
+            <a href="https://wa.me/351927155336?text=Olá!%20Tenho%20interesse%20no%20Quarto%20Jardim%20em%20Sintra.%20Podiam%20dar-me%20mais%20informações%3F"
+               target="_blank" rel="noopener noreferrer" class="btn-wa-listing">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Reservar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card" data-type="quartos">
+        <div class="listing-img-wrap"
+             style="background-color:#3a4858;background-image:url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=700&q=80&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=700&q=80&fit=crop" alt="Quarto Atlântico" loading="lazy">
+          <span class="listing-type-badge">Quarto</span>
+        </div>
+        <div class="listing-body">
+          <h3 class="listing-name">Quarto Atlântico</h3>
+          <p class="listing-location">Cascais, Lisboa</p>
+          <div class="listing-amenities">
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M2 20v-6a2 2 0 012-2h16a2 2 0 012 2v6"/><path d="M2 14v-4a2 2 0 012-2h4a2 2 0 012 2v4"/></svg>
+              1 cama
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              2 hóspedes
+            </span>
+            <span class="listing-amenity">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              Vista Mar
+            </span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">€90 <span>/noite</span></div>
+            <a href="https://wa.me/351927155336?text=Olá!%20Tenho%20interesse%20no%20Quarto%20Atlântico%20em%20Cascais.%20Podiam%20dar-me%20mais%20informações%3F"
+               target="_blank" rel="noopener noreferrer" class="btn-wa-listing">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Reservar
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="listings-cta">
+    <p class="s-tag">Não encontrou o que procura?</p>
+    <h2 class="s-title" style="font-size:44px">Fale connosco diretamente</h2>
+    <div class="s-divider"></div>
+    <p style="font-size:15px;font-weight:300;color:var(--body-c);max-width:520px;margin:0 auto 40px;line-height:1.85;">Temos mais alojamentos disponíveis. Diga-nos as suas preferências e encontramos a opção perfeita para si.</p>
+    <a href="https://wa.me/351927155336?text=Olá!%20Não%20encontrei%20o%20alojamento%20ideal.%20Podiam%20ajudar-me%20a%20encontrar%20algo%20adequado%3F"
+       target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Contactar no WhatsApp
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-logo">
+        <div class="logo">
+          <div class="logo-mono"><em>L</em>L</div>
+          <div class="logo-sep"></div>
+          <div class="logo-words">
+            <span class="l-name">Lethes</span>
+            <span class="l-sub">Legacy</span>
+          </div>
+        </div>
+        <p class="footer-tagline">Boutique Stays &amp; Local Hospitality.<br>Criamos experiências únicas em Portugal.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Alojamentos</h4>
+        <ul>
+          <li><a href="#casas" onclick="filterAndScroll('casas')">Casas</a></li>
+          <li><a href="#apartamentos" onclick="filterAndScroll('apartamentos')">Apartamentos</a></li>
+          <li><a href="#quartos" onclick="filterAndScroll('quartos')">Quartos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="index.html#sobre">Sobre Nós</a></li>
+          <li><a href="index.html#gestao">Gestão de AL</a></li>
+          <li><a href="index.html#experiencias">Experiências</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/351927155336" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          <li><a href="mailto:geral@letheslegacy.pt">Email</a></li>
+          <li><a href="index.html">Homepage</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Lethes Legacy. Todos os direitos reservados.</span>
+      <span>Política de Privacidade &nbsp;·&nbsp; Termos e Condições</span>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FAB -->
+  <a href="https://wa.me/351927155336?text=Olá!%20Gostaria%20de%20obter%20mais%20informações."
+     target="_blank" rel="noopener noreferrer" class="wa-fab" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    const tabs = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.listing-card');
+
+    function applyFilter(type) {
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.filter === type));
+      cards.forEach(c => {
+        c.classList.toggle('hidden', type !== 'todos' && c.dataset.type !== type);
+      });
+    }
+
+    tabs.forEach(t => t.addEventListener('click', () => applyFilter(t.dataset.filter)));
+
+    function filterAndScroll(type) {
+      applyFilter(type);
+      const bar = document.getElementById('filter-bar');
+      if (bar) {
+        const top = bar.getBoundingClientRect().top + window.scrollY - document.querySelector('.navbar').offsetHeight;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+
+    // On load: activate tab from URL hash
+    (function () {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && ['casas', 'apartamentos', 'quartos'].includes(hash)) {
+        applyFilter(hash);
+        setTimeout(function () {
+          const bar = document.getElementById('filter-bar');
+          if (bar) {
+            const top = bar.getBoundingClientRect().top + window.scrollY - document.querySelector('.navbar').offsetHeight;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        }, 300);
+      }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var navbar    = document.querySelector('.navbar');
+      var hamburger = document.querySelector('.nav-hamburger');
+
+      function onScroll() {
+        navbar.classList.toggle('scrolled', window.scrollY > 20);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      if (!hamburger) return;
+      hamburger.addEventListener('click', function () {
+        var open = navbar.classList.toggle('open');
+        document.body.classList.toggle('nav-open', open);
+        hamburger.setAttribute('aria-expanded', String(open));
+      });
+      document.querySelectorAll('.nav-links a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          navbar.classList.remove('open');
+          document.body.classList.remove('nav-open');
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
