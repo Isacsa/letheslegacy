@@ -17,7 +17,7 @@
   --white:   #fdfaf5;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 /* ── PAGE TRANSITION VEIL ───────────────────────── */
 
@@ -77,10 +77,11 @@ body {
   color: var(--dark);
   background: var(--white);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; }
-img { display: block; }
+img { display: block; max-width: 100%; }
 
 /* ── NAVBAR ─────────────────────────────────────── */
 
@@ -254,6 +255,7 @@ img { display: block; }
 
 .hero {
   position: relative;
+  z-index: 0;
   height: 100vh;
   min-height: 640px;
   margin-top: 0;
@@ -266,9 +268,15 @@ img { display: block; }
   position: absolute;
   inset: 0;
   background-color: #2a1c10;
-  background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80');
-  background-size: cover;
-  background-position: center 40%;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
 }
 
 .hero-bg::after {
@@ -368,6 +376,9 @@ img { display: block; }
 .prop-cats-wrap {
   background: var(--cream);
   padding: 0 0 72px;
+  position: relative;
+  z-index: 1;
+  display: flow-root;   /* impede colapso de margem: cards transbordam por cima do vídeo de forma determinística */
 }
 
 .prop-cats {
@@ -752,7 +763,7 @@ img { display: block; }
 }
 
 .sobre-img-wrap {
-  aspect-ratio: 4/5;
+  aspect-ratio: 1265/1200;
   overflow: hidden;
   background: linear-gradient(135deg, #3a2a1a, #6a4a2a, #2a1a0a);
 }
@@ -994,7 +1005,10 @@ footer {
   position: sticky;
   top: 80px;
   z-index: 100;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+.filter-bar::-webkit-scrollbar { display: none; }
 
 .filter-btn {
   padding: 18px 28px;
@@ -1095,6 +1109,7 @@ footer {
   color: var(--dark);
   margin-bottom: 5px;
   line-height: 1.2;
+  overflow-wrap: break-word;
 }
 
 .listing-location {
@@ -1140,6 +1155,8 @@ footer {
   font-size: 12px;
   line-height: 1.5;
   margin: -4px 0 16px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .listing-address svg {
@@ -1355,6 +1372,7 @@ body.modal-open { overflow: hidden; }
 .listing-modal-info {
   padding: 42px 38px 34px;
   min-height: 0;
+  min-width: 0;
   overflow: auto;
 }
 
@@ -1373,6 +1391,7 @@ body.modal-open { overflow: hidden; }
   font-weight: 500;
   line-height: 1.05;
   margin-bottom: 10px;
+  overflow-wrap: break-word;
 }
 
 .listing-modal-meta {
@@ -1419,6 +1438,7 @@ body.modal-open { overflow: hidden; }
   font-weight: 300;
   line-height: 1.8;
   margin-bottom: 30px;
+  overflow-wrap: break-word;
 }
 
 .listing-modal-address {
@@ -1736,7 +1756,7 @@ body.nav-open  { overflow: hidden; }
 
   /* ── SOBRE NÓS ── */
   .sobre          { grid-template-columns: 1fr; padding: 48px 20px; gap: 36px; }
-  .sobre-img-wrap { aspect-ratio: 4/5; }
+  .sobre-img-wrap { aspect-ratio: 4/3; }
   .stat-num       { font-size: 36px; }
   .stats-grid     { gap: 20px; }
 

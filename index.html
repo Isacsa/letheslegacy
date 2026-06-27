@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=4">
   <script src="transitions.js"></script>
 </head>
 <body>
@@ -39,7 +39,13 @@
 
   <!-- HERO -->
   <section class="hero" id="inicio">
-    <div class="hero-bg"></div>
+    <div class="hero-bg">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto"
+             poster="uploads/banner1-poster.jpg">
+        <source src="uploads/banner1.mp4" type="video/mp4">
+        <source src="uploads/banner1.webm" type="video/webm">
+      </video>
+    </div>
     <div class="hero-content">
       <p class="hero-tag">Boutique Stays &amp; Local Hospitality</p>
       <h1 class="hero-title">Um legado de<br>experiências</h1>
@@ -205,7 +211,7 @@
     </div>
     <div class="gestao-visual">
       <div class="gestao-img-wrap">
-        <img src="uploads/landingpage1.png" alt="Gestão de alojamento local Lethes Legacy" loading="lazy" decoding="async">
+        <img src="uploads/landingpage1.jpg" alt="Gestão de alojamento local Lethes Legacy" loading="lazy" decoding="async">
       </div>
       <div class="gestao-accent"></div>
     </div>
@@ -256,7 +262,7 @@
   <!-- SOBRE NÓS -->
   <section class="sobre" id="sobre">
     <div class="sobre-img-wrap">
-      <img src="uploads/landingpage2.png" alt="Sobre a Lethes Legacy" loading="lazy" decoding="async">
+      <img src="uploads/landingpage2.jpg" alt="Sobre a Lethes Legacy" loading="lazy" decoding="async">
     </div>
     <div class="sobre-content">
       <p class="s-tag left">Sobre Nós</p>
