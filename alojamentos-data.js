@@ -612,6 +612,22 @@
   }
 ];
 
+  // URL base dos ficheiros media (Cloudflare R2).
+  // Para passar ao domínio próprio, mudar SÓ esta linha (ex: 'https://media.letheslegacy.pt/').
+  var mediaBase = 'https://pub-aa72ada04c444be4ba353768bbc5513b.r2.dev/';
+
+  function withBase(path) {
+    if (!path) return path;
+    if (/^https?:\/\//.test(path)) return path;
+    return mediaBase + path.replace(/^\/+/, '');
+  }
+
+  listings.forEach(function (listing) {
+    if (listing.cover) listing.cover = withBase(listing.cover);
+    if (listing.preview) listing.preview = listing.preview.map(withBase);
+    if (listing.gallery) listing.gallery = listing.gallery.map(withBase);
+  });
+
   var modal;
   var activeListing = null;
   var activePhotos = [];
