@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin — Lethes Legacy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="admin.css?v=1">
+</head>
+<body class="admin-body">
+
+  <!-- ===== LOGIN ===== -->
+  <section id="login-view" class="admin-login" hidden>
+    <form id="login-form" class="login-card">
+      <h1>Painel de Alojamentos</h1>
+      <p class="login-sub">Lethes Legacy</p>
+      <label>Email
+        <input type="email" id="login-email" required autocomplete="username">
+      </label>
+      <label>Password
+        <input type="password" id="login-pass" required autocomplete="current-password">
+      </label>
+      <button type="submit" class="btn-gold" style="width:100%">Entrar</button>
+      <p id="login-error" class="login-error" role="alert"></p>
+    </form>
+  </section>
+
+  <!-- ===== PAINEL ===== -->
+  <section id="panel-view" class="admin-panel" hidden>
+    <header class="admin-header">
+      <div>
+        <p class="admin-sub">Gestão de conteúdo</p>
+        <h1>Alojamentos</h1>
+      </div>
+      <div class="admin-header-actions">
+        <button id="btn-add" class="btn-gold">+ Adicionar alojamento</button>
+        <button id="btn-logout" class="btn-ghost">Sair</button>
+      </div>
+    </header>
+    <div id="listing-list" class="admin-list"></div>
+  </section>
+
+  <!-- ===== EDITOR ===== -->
+  <div id="editor" class="editor-overlay" hidden>
+    <div class="editor-panel" role="dialog" aria-modal="true" aria-labelledby="editor-title">
+      <header class="editor-head">
+        <h2 id="editor-title">Novo alojamento</h2>
+        <button id="editor-close" class="editor-close" aria-label="Fechar">&times;</button>
+      </header>
+
+      <form id="editor-form" class="editor-body">
+        <div class="field-grid">
+          <label class="fld fld-wide">Título
+            <input name="title" required placeholder="Ex.: Casa Laurinha">
+          </label>
+          <label class="fld">Tipo
+            <select name="type">
+              <option value="casas">Casa</option>
+              <option value="apartamentos">Apartamento</option>
+              <option value="quartos">Quarto</option>
+            </select>
+          </label>
+          <label class="fld">Etiqueta (badge)
+            <input name="badge" placeholder="Casa / Apartamento / Quarto">
+          </label>
+          <label class="fld">Subtítulo
+            <input name="meta" placeholder="Ex.: Casa">
+          </label>
+          <label class="fld">Destaque
+            <input name="feature" placeholder="Ex.: 2 quartos">
+          </label>
+          <label class="fld">Capacidade
+            <input name="capacity" placeholder="Ex.: 5 hóspedes">
+          </label>
+          <label class="fld">Preço
+            <input name="price" placeholder="Vazio = Sob consulta">
+          </label>
+          <label class="fld fld-wide">Morada
+            <input name="address" placeholder="Rua, código postal, localidade">
+          </label>
+          <label class="fld">Ordem na grelha
+            <input name="position" type="number" value="0">
+          </label>
+        </div>
+
+        <label class="fld fld-wide">Descrição
+          <textarea name="description" rows="3" placeholder="Texto descritivo do alojamento"></textarea>
+        </label>
+
+        <fieldset class="block">
+          <legend>Tipologias</legend>
+          <div id="units-list"></div>
+          <button type="button" id="add-unit" class="btn-mini">+ Tipologia</button>
+        </fieldset>
+
+        <fieldset class="block">
+          <legend>Fotografias</legend>
+          <div id="photos-grid" class="media-grid"></div>
+          <label class="dropzone" id="photo-drop">
+            <input type="file" id="photo-input" accept="image/*" multiple hidden>
+            Arrastar fotos para aqui ou clicar para escolher
+          </label>
+          <p class="hint">A 1.ª foto é a capa. Use ★ para definir capa, ◀ ▶ para reordenar, × para remover. As fotos são otimizadas automaticamente antes do envio.</p>
+        </fieldset>
+
+        <fieldset class="block">
+          <legend>Vídeos</legend>
+          <div id="videos-grid" class="media-grid"></div>
+          <label class="dropzone" id="video-drop">
+            <input type="file" id="video-input" accept="video/*" multiple hidden>
+            Arrastar vídeos para aqui ou clicar para escolher
+          </label>
+          <p class="hint">Clips curtos (MP4/WebM). Máx. 120 MB por ficheiro.</p>
+        </fieldset>
+      </form>
+
+      <footer class="editor-foot">
+        <button id="editor-cancel" type="button" class="btn-ghost">Cancelar</button>
+        <button id="editor-save" type="submit" form="editor-form" class="btn-gold">Guardar</button>
+      </footer>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="admin.js?v=1"></script>
+</body>
+</html>

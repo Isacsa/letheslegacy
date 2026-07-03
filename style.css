@@ -1051,6 +1051,16 @@ footer {
 
 .listings-grid:not(.is-rendered) .listing-card { display: none; }
 
+.listings-status {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--body-c);
+  font-weight: 300;
+  font-size: 15px;
+}
+.listings-error { color: #b3261e; }
+
 .listing-card {
   background: white;
   overflow: hidden;
@@ -1323,6 +1333,15 @@ body.modal-open { overflow: hidden; }
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.listing-modal-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
 }
 
 .listing-gallery-nav {
