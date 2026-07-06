@@ -1,4 +1,18 @@
 # Cloudflare Pages — headers
+
+# Ficheiros que mudam com frequência: o browser revalida SEMPRE antes de usar
+# a cópia em cache (evita ficar preso a versões antigas do admin/site).
+/admin.js
+  Cache-Control: no-cache
+/admin.css
+  Cache-Control: no-cache
+/config.js
+  Cache-Control: no-cache
+/alojamentos-data.js
+  Cache-Control: no-cache
+/style.css
+  Cache-Control: no-cache
+
 # Admin e API fora dos motores de busca (reforça o meta noindex do admin.html)
 
 /admin
