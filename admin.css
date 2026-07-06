@@ -2,6 +2,10 @@
    LETHES LEGACY — Admin (usa os tokens de style.css)
    ================================================ */
 
+/* O atributo hidden TEM de vencer qualquer display definido abaixo
+   (senão o modal/login ficam sempre visíveis). Não remover. */
+[hidden] { display: none !important; }
+
 .admin-body { background: var(--cream); color: var(--dark); min-height: 100vh; }
 
 /* ── LOGIN ─────────────────────────────────────── */

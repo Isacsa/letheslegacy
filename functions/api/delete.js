@@ -24,6 +24,13 @@ export async function onRequestPost(context) {
   });
   if (!who.ok) return json({ error: 'Sessão inválida.' }, 401);
 
+  // Defesa extra: se ADMIN_EMAILS estiver definido, só esses emails podem apagar.
+  const user = await who.json().catch(() => ({}));
+  const allowed = String(env.ADMIN_EMAILS || '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
+  if (allowed.length && !allowed.includes(String(user.email || '').toLowerCase())) {
+    return json({ error: 'Sem permissão.' }, 403);
+  }
+
   let body;
   try { body = await request.json(); } catch { return json({ error: 'JSON inválido.' }, 400); }
 
@@ -44,16 +51,13 @@ function keyFromUrl(u, base) {
   if (base && String(u).indexOf(base + '/') === 0) return String(u).slice(base.length + 1);
   try { return new URL(u).pathname.replace(/^\/+/, ''); } catch (e) { return null; }
 }
+// Nota: sem headers CORS — o admin chama esta API sempre same-origin.
 function cors() {
-  return {
-    'access-control-allow-origin': '*',
-    'access-control-allow-methods': 'POST, OPTIONS',
-    'access-control-allow-headers': 'authorization, content-type'
-  };
+  return {};
 }
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { 'content-type': 'application/json', ...cors() }
+    headers: { 'content-type': 'application/json' }
   });
 }

@@ -74,7 +74,7 @@
 
   function thumbnailMarkup(listing) {
     return previewPhotos(listing).slice(1).map(function (photo, index) {
-      return '<img src="' + photo + '" alt="' + escapeHtml(listing.title) + ' - fotografia ' + (index + 2) + '" loading="lazy">';
+      return '<img src="' + escapeHtml(photo) + '" alt="' + escapeHtml(listing.title) + ' - fotografia ' + (index + 2) + '" loading="lazy">';
     }).join('');
   }
 
@@ -96,9 +96,9 @@
   function listingCard(listing, index) {
     var photoCount = galleryPhotos(listing).length;
     return [
-      '<article class="listing-card" data-type="' + listing.type + '" data-listing-index="' + index + '" tabindex="0" role="button" aria-label="Ver mais informações de ' + escapeHtml(listing.title) + '">',
+      '<article class="listing-card" data-type="' + escapeHtml(listing.type) + '" data-listing-index="' + index + '" tabindex="0" role="button" aria-label="Ver mais informações de ' + escapeHtml(listing.title) + '">',
       '  <div class="listing-img-wrap">',
-      '    <img src="' + listing.cover + '" alt="' + escapeHtml(listing.title) + '" loading="lazy">',
+      '    <img src="' + escapeHtml(listing.cover) + '" alt="' + escapeHtml(listing.title) + '" loading="lazy">',
       '    <span class="listing-type-badge">' + escapeHtml(listing.badge) + '</span>',
       '  </div>',
       '  <div class="listing-body">',
@@ -235,6 +235,8 @@
 
   function closeModal() {
     if (!modal || !modal.classList.contains('open')) return;
+    var video = modal.querySelector('.listing-modal-video');
+    if (video) { try { video.pause(); } catch (e) {} }
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');

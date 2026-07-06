@@ -6,10 +6,13 @@
   'use strict';
 
   var cfg = window.LL_CONFIG || {};
-  if (!cfg.SUPABASE_URL || cfg.SUPABASE_URL.indexOf('SEU-PROJETO') !== -1 || !cfg.SUPABASE_ANON_KEY || cfg.SUPABASE_ANON_KEY.indexOf('SUA-ANON') !== -1) {
-    alert('Falta configurar o Supabase em config.js (SUPABASE_URL / SUPABASE_ANON_KEY).');
+  var bootError = '';
+  if (!window.supabase) {
+    bootError = 'Não foi possível carregar o sistema. Verifique a ligação à internet e atualize a página.';
+  } else if (!cfg.SUPABASE_URL || cfg.SUPABASE_URL.indexOf('SEU-PROJETO') !== -1 || !cfg.SUPABASE_ANON_KEY || cfg.SUPABASE_ANON_KEY.indexOf('SUA-ANON') !== -1) {
+    bootError = 'Configuração em falta (config.js). Contacte o suporte.';
   }
-  var sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+  var sb = bootError ? null : window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
 
   // ── elementos ──
   var loginView  = document.getElementById('login-view');
@@ -28,23 +31,39 @@
   // ── AUTH ──────────────────────────────────────
   init();
   async function init() {
+    if (bootError) { showLogin(); loginError.textContent = bootError; return; }
     var res = await sb.auth.getSession();
     (res.data && res.data.session) ? showPanel() : showLogin();
-    sb.auth.onAuthStateChange(function (_e, session) { session ? showPanel() : showLogin(); });
+    // Só reagir a login/logout explícitos — TOKEN_REFRESHED não deve recarregar a lista
+    // (podia "pisar" uma edição aberta).
+    sb.auth.onAuthStateChange(function (event, session) {
+      if (event === 'SIGNED_OUT' || !session) showLogin();
+      else if (event === 'SIGNED_IN' && panelView.hidden) showPanel();
+    });
   }
   function showLogin() { panelView.hidden = true; editor.hidden = true; loginView.hidden = false; }
   async function showPanel() { loginView.hidden = true; panelView.hidden = false; await loadListings(); }
 
   loginForm.addEventListener('submit', async function (e) {
     e.preventDefault();
+    if (!sb) { loginError.textContent = bootError; return; }
     loginError.textContent = '';
     var r = await sb.auth.signInWithPassword({
       email: document.getElementById('login-email').value.trim(),
       password: document.getElementById('login-pass').value
     });
-    if (r.error) loginError.textContent = 'Não foi possível entrar: ' + r.error.message;
+    if (r.error) loginError.textContent = ptAuthError(r.error.message);
   });
-  document.getElementById('btn-logout').addEventListener('click', function () { sb.auth.signOut(); });
+  document.getElementById('btn-logout').addEventListener('click', function () { if (sb) sb.auth.signOut(); });
+
+  function ptAuthError(msg) {
+    msg = String(msg || '');
+    if (/invalid login credentials/i.test(msg)) return 'Email ou password errados.';
+    if (/email not confirmed/i.test(msg)) return 'O email ainda não foi confirmado.';
+    if (/rate limit|too many/i.test(msg)) return 'Demasiadas tentativas. Aguarde um momento e tente de novo.';
+    if (/network|fetch/i.test(msg)) return 'Sem ligação. Verifique a internet e tente de novo.';
+    return 'Não foi possível entrar: ' + msg;
+  }
 
   // ── LISTAGEM ──────────────────────────────────
   async function loadListings() {
@@ -116,7 +135,7 @@
     setVal('capacity', l && l.capacity);
     setVal('price', l && l.price);
     setVal('address', l && l.address);
-    setVal('position', (l && l.position) || 0);
+    setVal('position', l ? (l.position || 0) : nextPosition());
     setVal('description', l && l.description);
     renderUnits((l && l.units) || []);
     renderPhotos();
@@ -126,6 +145,7 @@
     document.body.style.overflow = 'hidden';
   }
   function closeEditor() {
+    if (state && (state.pending.length || state.vpending.length) && !confirm('Há uploads em curso. Fechar mesmo assim?')) return;
     if (state && state.dirty && !confirm('Tem alterações não guardadas. Descartar?')) return;
     editor.hidden = true; state = null; document.body.style.overflow = '';
   }
@@ -195,6 +215,8 @@
     renderPhotos();
   });
   async function handlePhotos(files) {
+    var st = state; // captura a sessão de edição: se o editor fechar a meio, não crasha
+    if (!st) return;
     var slug = slugify(getVal('title') || 'geral');
     var list = Array.prototype.filter.call(files, function (f) { return /^image\//.test(f.type) || isHeic(f); });
     if (!list.length) return;
@@ -202,22 +224,23 @@
     updateSaveGuard();
     await runLimited(list, 3, async function (f) {
       var pend = { key: uid(), name: f.name };
-      state.pending.push(pend); renderPhotos();
+      st.pending.push(pend);
+      if (state === st) renderPhotos();
       try {
         var res = await compressImage(f);
-        if (res.lowRes) toast('“' + f.name + '”: resolução baixa, pode ficar menos nítida.', true);
+        if (res.lowRes) toast('“' + f.name + '”: resolução baixa, pode ficar menos nítida no site.');
         var url = await uploadFile(res.file, 'image', slug);
-        state.gallery.push(url);
-        if (!state.cover) state.cover = url;
-        markDirty();
+        st.gallery.push(url);
+        if (!st.cover) st.cover = url;
+        st.dirty = true;
       } catch (err) {
         toast('“' + f.name + '”: ' + err.message, true);
       } finally {
-        state.pending = state.pending.filter(function (p) { return p.key !== pend.key; });
-        renderPhotos(); updateSaveGuard();
+        st.pending = st.pending.filter(function (p) { return p.key !== pend.key; });
+        if (state === st) { renderPhotos(); updateSaveGuard(); }
       }
     });
-    toast('Fotos atualizadas (' + state.gallery.length + ').');
+    if (state === st) toast('Fotos atualizadas (' + st.gallery.length + ').');
   }
 
   // Vídeos
@@ -240,6 +263,8 @@
     if (b.dataset.rmv != null) { state.videos.splice(+b.dataset.rmv, 1); markDirty(); renderVideos(); }
   });
   async function handleVideos(files) {
+    var st = state;
+    if (!st) return;
     var slug = slugify(getVal('title') || 'geral');
     var list = Array.prototype.filter.call(files, function (f) { return /^video\//.test(f.type); });
     if (!list.length) return;
@@ -247,18 +272,19 @@
     updateSaveGuard();
     await runLimited(list, 2, async function (f) {
       var pend = { key: uid(), name: f.name };
-      state.vpending.push(pend); renderVideos();
+      st.vpending.push(pend);
+      if (state === st) renderVideos();
       try {
-        state.videos.push(await uploadFile(f, 'video', slug));
-        markDirty();
+        st.videos.push(await uploadFile(f, 'video', slug));
+        st.dirty = true;
       } catch (err) {
         toast('“' + f.name + '”: ' + err.message, true);
       } finally {
-        state.vpending = state.vpending.filter(function (p) { return p.key !== pend.key; });
-        renderVideos(); updateSaveGuard();
+        st.vpending = st.vpending.filter(function (p) { return p.key !== pend.key; });
+        if (state === st) { renderVideos(); updateSaveGuard(); }
       }
     });
-    toast('Vídeos atualizados.');
+    if (state === st) toast('Vídeos atualizados.');
   }
 
   // Guardar
@@ -326,7 +352,8 @@
 
   // Apaga media do R2 (best-effort — não bloqueia se falhar / se o endpoint ainda não existir).
   function deleteMedia(urls) {
-    if (!urls || !urls.length) return Promise.resolve();
+    urls = (urls || []).filter(function (u, i, a) { return u && a.indexOf(u) === i; });
+    if (!urls.length) return Promise.resolve();
     return sb.auth.getSession().then(function (r) {
       var t = r.data.session && r.data.session.access_token;
       if (!t) return;
@@ -410,6 +437,11 @@
   function slugify(s) { return String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'geral'; }
 
   function uid() { return 'u' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+  function nextPosition() {
+    var m = -1;
+    listings.forEach(function (x) { var p = parseInt(x.position, 10); if (!isNaN(p) && p > m) m = p; });
+    return m + 1;
+  }
   function runLimited(items, limit, worker) {
     var i = 0;
     function next() {

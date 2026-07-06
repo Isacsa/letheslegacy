@@ -1,0 +1,11 @@
+# Cloudflare Pages — headers
+# Admin e API fora dos motores de busca (reforça o meta noindex do admin.html)
+
+/admin
+  X-Robots-Tag: noindex, nofollow
+
+/admin.html
+  X-Robots-Tag: noindex, nofollow
+
+/api/*
+  X-Robots-Tag: noindex, nofollow

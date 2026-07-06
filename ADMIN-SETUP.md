@@ -58,6 +58,27 @@ Quando A–C estiverem feitos, eu:
 
 ---
 
+## E. Endurecimento de segurança (OBRIGATÓRIO — 3 passos)
+
+Fecha a escrita a 3 camadas. Sem o passo 1, qualquer pessoa podia auto-registar-se e escrever.
+
+1. **Desligar sign-ups públicos (CRÍTICO)** — Supabase → **Authentication → Sign In / Providers**
+   (ou "Providers → Email") → desligar **"Allow new users to sign up"** → Save.
+2. **Restringir escrita à lista de admins** — Supabase → **SQL Editor** → colar o conteúdo de
+   [`supabase/hardening.sql`](supabase/hardening.sql) → **Run**. (Cria `private.admins`, semeada
+   com os utilizadores existentes, e as políticas passam a exigir estar nessa lista.)
+   O último SELECT mostra a lista — confirma que tem os emails certos.
+3. **Functions só para emails de admin** — Cloudflare → Pages → Settings → **Environment
+   variables** (Production) → adicionar `ADMIN_EMAILS` = emails autorizados separados por
+   vírgula (ex.: `cliente@gmail.com,isacsa14@gmail.com`) → **Retry deployment**.
+
+Verificação rápida de segurança (depois dos 3 passos):
+- Tentar registar conta nova → deve falhar ("Signups not allowed").
+- `/api/upload` sem login → 401; com login de email fora da lista → 403.
+- Escrita anónima na tabela → 401 (row-level security).
+
+---
+
 ## Notas úteis
 
 - **Onde fica o painel:** `/admin.html` (ex.: `teusite.com/admin.html`). Não tem link no site
