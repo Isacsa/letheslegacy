@@ -83,6 +83,12 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); bord
 .media-tools button { background: rgba(255,255,255,.92); border: 0; border-radius: 4px; width: 22px; height: 22px; font-size: 12px; cursor: pointer; line-height: 1; }
 .media-tools button.danger { color: #b3261e; }
 
+/* estado de upload */
+.media-item.pending { display: grid; place-items: center; gap: 6px; color: var(--body-c); padding: 6px; text-align: center; }
+.media-item.pending .spinner { width: 22px; height: 22px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: adm-spin .8s linear infinite; }
+.media-item.pending .pending-name { font-size: 10px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@keyframes adm-spin { to { transform: rotate(360deg); } }
+
 /* ── TOAST ─────────────────────────────────────── */
 .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--dark); color: #fff; padding: 12px 20px; border-radius: 10px; font-size: 14px; z-index: 200; box-shadow: 0 10px 30px rgba(0,0,0,.25); max-width: 90vw; text-align: center; }
 .toast.err { background: #b3261e; }
