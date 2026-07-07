@@ -44,7 +44,7 @@ No painel da Cloudflare → **Pages → (o teu projeto) → Settings**:
 2. **Environment variables** (Production **e** Preview):
    - `SUPABASE_URL` = a tua Project URL
    - `SUPABASE_ANON_KEY` = a chave anon
-   - `R2_PUBLIC_BASE` = `https://pub-aa72ada04c444be4ba353768bbc5513b.r2.dev`
+   - `R2_PUBLIC_BASE` = `https://media.letheslegacy.com` (ver secção F)
 3. Faz um novo deploy (push ou "Retry deployment") para aplicar o binding.
 
 ---
@@ -76,6 +76,30 @@ Verificação rápida de segurança (depois dos 3 passos):
 - Tentar registar conta nova → deve falhar ("Signups not allowed").
 - `/api/upload` sem login → 401; com login de email fora da lista → 403.
 - Escrita anónima na tabela → 401 (row-level security).
+
+---
+
+## F. Domínio próprio para o media (OBRIGATÓRIO — corrige imagens partidas)
+
+O endereço `pub-*.r2.dev` é um endpoint de **desenvolvimento** da Cloudflare: tem limite de
+pedidos (em galerias grandes bloqueia e as imagens aparecem partidas) e não usa o CDN.
+A solução é ligar um subdomínio próprio ao bucket:
+
+1. **Ligar o domínio ao bucket** — Cloudflare → **R2 → letheslegacy-media → Settings →
+   Public access → Custom Domains → Connect domain** → escrever `media.letheslegacy.com`
+   → confirmar. (O DNS e o certificado ficam automáticos porque o domínio já está na conta.)
+2. **Atualizar a variável** — Pages → Settings → Environment variables (Production) →
+   `R2_PUBLIC_BASE` = `https://media.letheslegacy.com` → **Retry deployment**.
+3. **Migrar os URLs guardados** — Supabase → SQL Editor → colar o conteúdo de
+   [`supabase/media-domain.sql`](supabase/media-domain.sql) → **Run**.
+   O SELECT final deve mostrar 0 em todas as colunas.
+4. *(Opcional, depois de confirmar que o site está bem)* — R2 → bucket → Settings →
+   Public access → **desativar o r2.dev** ("Public Development URL"), para garantir que
+   nada volta a usar o endereço antigo.
+
+Nota: o site e o admin já reescrevem URLs antigos `r2.dev` para o domínio novo em runtime,
+por isso nada parte enquanto os passos não estiverem todos feitos — mas o passo 3 deve ser
+feito na mesma para os dados ficarem certos.
 
 ---
 

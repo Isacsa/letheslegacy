@@ -70,7 +70,7 @@
     listEl.innerHTML = '<p class="muted">A carregar…</p>';
     var r = await sb.from('listings').select('*').order('position').order('created_at');
     if (r.error) { listEl.innerHTML = '<p class="error">Erro a carregar: ' + esc(r.error.message) + '</p>'; return; }
-    listings = r.data || [];
+    listings = (r.data || []).map(fixListingMedia);
     renderList();
   }
   function renderList() {
@@ -182,7 +182,7 @@
     var html = state.gallery.map(function (url, i) {
       var isCover = url === state.cover || (i === 0 && !state.cover);
       return '<div class="media-item' + (isCover ? ' is-cover' : '') + '">' +
-        '<img src="' + esc(url) + '" alt="">' +
+        '<img src="' + esc(url) + '" alt="" loading="lazy" decoding="async">' +
         (isCover ? '<span class="cover-badge">Capa</span>' : '') +
         '<div class="media-tools">' +
           '<button type="button" data-mv="' + i + '|-1" title="Recuar">◀</button>' +
@@ -365,6 +365,22 @@
     });
   }
 
+  // O endpoint pub-*.r2.dev é só para desenvolvimento (rate limiting, sem CDN);
+  // URLs antigas guardadas na BD são reescritas para o domínio próprio.
+  var LEGACY_MEDIA = /^https:\/\/pub-[a-z0-9]+\.r2\.dev\//;
+  var mediaBase = String(cfg.R2_PUBLIC_BASE || '').replace(/\/+$/, '');
+  function fixMediaUrl(u) {
+    if (!u || !mediaBase || !LEGACY_MEDIA.test(u)) return u;
+    return u.replace(LEGACY_MEDIA, mediaBase + '/');
+  }
+  function fixListingMedia(l) {
+    if (l.cover) l.cover = fixMediaUrl(l.cover);
+    ['gallery', 'preview', 'videos'].forEach(function (k) {
+      if (l[k]) l[k] = l[k].map(fixMediaUrl);
+    });
+    return l;
+  }
+
   function isHeic(file) {
     return /image\/hei[cf]/i.test(file.type || '') || /\.hei[cf]$/i.test(file.name || '');
   }
@@ -418,9 +434,16 @@
     c.getContext('2d').drawImage(bmp, 0, 0, cw, ch);
     if (bmp.close) bmp.close();
     var blob = await new Promise(function (r) { c.toBlob(r, 'image/webp', quality); });
+    // Safari não encoda WebP (devolve PNG ou null) — cair para JPEG mantém o
+    // conteúdo coerente com a extensão e o tamanho do ficheiro controlado.
+    var outType = 'image/webp', outExt = '.webp';
+    if (!blob || blob.type !== 'image/webp') {
+      blob = await new Promise(function (r) { c.toBlob(r, 'image/jpeg', quality); });
+      outType = 'image/jpeg'; outExt = '.jpg';
+    }
     if (!blob) return { file: file, lowRes: lowRes };
-    var name = (file.name || 'foto').replace(/\.[^.]+$/, '') + '.webp';
-    return { file: new File([blob], name, { type: 'image/webp' }), lowRes: lowRes };
+    var name = (file.name || 'foto').replace(/\.[^.]+$/, '') + outExt;
+    return { file: new File([blob], name, { type: outType }), lowRes: lowRes };
   }
 
   function setupDrop(zoneId, input, onFiles) {

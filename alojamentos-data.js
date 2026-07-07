@@ -14,12 +14,16 @@
   var listings = [
 ];
 
-  // URL base dos ficheiros media (Cloudflare R2).
-  // Para passar ao domínio próprio, mudar SÓ esta linha (ex: 'https://media.letheslegacy.pt/').
-  var mediaBase = 'https://pub-aa72ada04c444be4ba353768bbc5513b.r2.dev/';
+  // URL base dos ficheiros media (domínio próprio ligado ao bucket R2).
+  var mediaBase = 'https://media.letheslegacy.com/';
+
+  // O endpoint pub-*.r2.dev é só para desenvolvimento (rate limiting, sem CDN);
+  // URLs antigas guardadas na base de dados são reescritas para o domínio próprio.
+  var legacyMediaBase = /^https:\/\/pub-[a-z0-9]+\.r2\.dev\//;
 
   function withBase(path) {
     if (!path) return path;
+    if (legacyMediaBase.test(path)) return path.replace(legacyMediaBase, mediaBase);
     if (/^https?:\/\//.test(path)) return path;
     return mediaBase + path.replace(/^\/+/, '');
   }

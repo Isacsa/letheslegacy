@@ -9,7 +9,7 @@
      - Env vars / secrets:
          SUPABASE_URL        (ex.: https://xxxx.supabase.co)
          SUPABASE_ANON_KEY
-         R2_PUBLIC_BASE      (ex.: https://pub-...r2.dev)
+         R2_PUBLIC_BASE      (ex.: https://media.letheslegacy.com)
    ============================================================ */
 
 const ALLOWED = {
