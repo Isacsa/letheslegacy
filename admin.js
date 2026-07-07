@@ -161,6 +161,7 @@
     if (state && (state.pending.length || state.vpending.length) && !confirm('Há uploads em curso. Fechar mesmo assim?')) return;
     if (state && state.dirty && !confirm('Tem alterações não guardadas. Descartar?')) return;
     editor.hidden = true; state = null; document.body.style.overflow = '';
+    if (previewPane) previewPane.classList.remove('open');
   }
 
   // Tipologias (units)
@@ -365,6 +366,16 @@
   };
   var previewCard = document.getElementById('preview-card');
   var previewPage = document.getElementById('preview-page');
+  var previewPane = document.getElementById('editor-preview');
+
+  // Em ecrãs estreitos a pré-visualização abre como folha por cima do formulário.
+  document.getElementById('preview-toggle').addEventListener('click', function () {
+    renderPreview();
+    previewPane.classList.add('open');
+  });
+  document.getElementById('preview-close').addEventListener('click', function () {
+    previewPane.classList.remove('open');
+  });
 
   function renderPreview() {
     if (!state || !previewCard) return;

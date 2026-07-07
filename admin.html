@@ -2,14 +2,14 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
   <title>Admin — Lethes Legacy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=5">
-  <link rel="stylesheet" href="admin.css?v=3">
+  <link rel="stylesheet" href="admin.css?v=4">
 </head>
 <body class="admin-body">
 
@@ -49,7 +49,10 @@
     <div class="editor-panel" role="dialog" aria-modal="true" aria-labelledby="editor-title">
       <header class="editor-head">
         <h2 id="editor-title">Novo alojamento</h2>
-        <button id="editor-close" class="editor-close" aria-label="Fechar">&times;</button>
+        <div class="editor-head-actions">
+          <button id="preview-toggle" type="button" class="btn-mini preview-toggle">Pré-visualizar</button>
+          <button id="editor-close" class="editor-close" aria-label="Fechar">&times;</button>
+        </div>
       </header>
 
       <div class="editor-main">
@@ -124,7 +127,7 @@
           <div id="photos-grid" class="media-grid"></div>
           <label class="dropzone" id="photo-drop">
             <input type="file" id="photo-input" accept="image/*,.heic,.heif" multiple hidden>
-            Arrastar fotos para aqui ou clicar para escolher
+            Toque para escolher ou arraste fotos para aqui
           </label>
           <p class="hint">A 1.ª foto é a capa. Use ★ para definir capa, ◀ ▶ para reordenar, × para remover. As fotos são otimizadas automaticamente antes do envio.</p>
         </fieldset>
@@ -134,14 +137,17 @@
           <div id="videos-grid" class="media-grid"></div>
           <label class="dropzone" id="video-drop">
             <input type="file" id="video-input" accept="video/*" multiple hidden>
-            Arrastar vídeos para aqui ou clicar para escolher
+            Toque para escolher ou arraste vídeos para aqui
           </label>
           <p class="hint">Clips curtos (MP4/WebM). Máx. 120 MB por ficheiro. Entram no fim da galeria da página.</p>
         </fieldset>
       </form>
 
       <aside class="editor-preview" id="editor-preview">
-        <p class="preview-title">Pré-visualização</p>
+        <div class="preview-head">
+          <p class="preview-title">Pré-visualização</p>
+          <button id="preview-close" type="button" class="preview-close" aria-label="Fechar pré-visualização">&times;</button>
+        </div>
         <p class="preview-note">Atualiza enquanto escreve — é assim que fica no site.</p>
         <p class="preview-label">Cartão na lista</p>
         <div id="preview-card" class="preview-stage"></div>
@@ -161,6 +167,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="config.js?v=3"></script>
-  <script src="admin.js?v=6"></script>
+  <script src="admin.js?v=7"></script>
 </body>
 </html>
