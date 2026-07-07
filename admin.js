@@ -453,11 +453,16 @@
 
   function setupDrop(zoneId, input, onFiles) {
     var z = document.getElementById(zoneId);
-    z.addEventListener('click', function () { input.click(); });
+    // Sem listener de click: a zona é um <label> do input, o browser já abre o
+    // seletor nativamente — um input.click() extra abria o diálogo 2 vezes.
     ['dragover', 'dragenter'].forEach(function (ev) { z.addEventListener(ev, function (e) { e.preventDefault(); z.classList.add('drag'); }); });
     ['dragleave', 'drop'].forEach(function (ev) { z.addEventListener(ev, function (e) { e.preventDefault(); z.classList.remove('drag'); }); });
     z.addEventListener('drop', function (e) { if (e.dataTransfer && e.dataTransfer.files) onFiles(e.dataTransfer.files); });
   }
+  // Largar um ficheiro fora das dropzones não deve navegar a página para o ficheiro.
+  ['dragover', 'drop'].forEach(function (ev) {
+    document.addEventListener(ev, function (e) { e.preventDefault(); });
+  });
 
   function setVal(name, v) { var el = editorForm.elements[name]; if (el) el.value = (v == null ? '' : v); }
   function getVal(name) { var el = editorForm.elements[name]; return el ? el.value : ''; }
