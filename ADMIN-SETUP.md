@@ -88,8 +88,13 @@ A solução é ligar um subdomínio próprio ao bucket:
 1. **Ligar o domínio ao bucket** — Cloudflare → **R2 → letheslegacy-media → Settings →
    Public access → Custom Domains → Connect domain** → escrever `media.letheslegacy.com`
    → confirmar. (O DNS e o certificado ficam automáticos porque o domínio já está na conta.)
-2. **Atualizar a variável** — Pages → Settings → Environment variables (Production) →
-   `R2_PUBLIC_BASE` = `https://media.letheslegacy.com` → **Retry deployment**.
+2. **Atualizar a variável** — Workers & Pages → **o projeto ligado a letheslegacy.com** →
+   Settings → Environment variables → separador **Production** (não Preview!) →
+   `R2_PUBLIC_BASE` = `https://media.letheslegacy.com` (valor exato, sem espaços — o valor
+   original tinha um typo, `pubaa72…` sem hífen, que partia todos os uploads) → **Save** →
+   Deployments → **Retry deployment** no mais recente. A env só entra em vigor num deploy novo.
+   Nota: desde 2026-07 o admin constrói a URL das fotos a partir do `config.js` (no git),
+   por isso um typo nesta env já não parte as thumbnails — mas deve ficar correta na mesma.
 3. **Migrar os URLs guardados** — Supabase → SQL Editor → colar o conteúdo de
    [`supabase/media-domain.sql`](supabase/media-domain.sql) → **Run**.
    O SELECT final deve mostrar 0 em todas as colunas.

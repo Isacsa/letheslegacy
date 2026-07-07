@@ -17,9 +17,10 @@
   // URL base dos ficheiros media (domínio próprio ligado ao bucket R2).
   var mediaBase = 'https://media.letheslegacy.com/';
 
-  // O endpoint pub-*.r2.dev é só para desenvolvimento (rate limiting, sem CDN);
-  // URLs antigas guardadas na base de dados são reescritas para o domínio próprio.
-  var legacyMediaBase = /^https:\/\/pub-[a-z0-9]+\.r2\.dev\//;
+  // Qualquer host *.r2.dev é reescrito para o domínio próprio: o endpoint de
+  // desenvolvimento tem rate limiting e sem CDN, e já circularam variantes com
+  // typo (env mal configurada) — o padrão apanha todas.
+  var legacyMediaBase = /^https?:\/\/[a-z0-9-]+\.r2\.dev\//;
 
   function withBase(path) {
     if (!path) return path;

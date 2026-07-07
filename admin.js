@@ -347,7 +347,11 @@
       var er = await res.json().catch(function () { return {}; });
       throw new Error(er.error || ('Falha no upload (' + res.status + ').'));
     }
-    return (await res.json()).url;
+    // Construir a URL no cliente a partir da key: a base vem do config.js
+    // (versionado no git) e não da env do servidor, que já esteve mal configurada.
+    var out = await res.json();
+    if (out.key && mediaBase) return mediaBase + '/' + String(out.key).replace(/^\/+/, '');
+    return fixMediaUrl(out.url);
   }
 
   // Apaga media do R2 (best-effort — não bloqueia se falhar / se o endpoint ainda não existir).
@@ -365,9 +369,10 @@
     });
   }
 
-  // O endpoint pub-*.r2.dev é só para desenvolvimento (rate limiting, sem CDN);
-  // URLs antigas guardadas na BD são reescritas para o domínio próprio.
-  var LEGACY_MEDIA = /^https:\/\/pub-[a-z0-9]+\.r2\.dev\//;
+  // Qualquer host *.r2.dev é reescrito para o domínio próprio: o endpoint de
+  // desenvolvimento tem rate limiting e sem CDN, e já circularam variantes com
+  // typo (env mal configurada) — o padrão apanha todas.
+  var LEGACY_MEDIA = /^https?:\/\/[a-z0-9-]+\.r2\.dev\//;
   var mediaBase = String(cfg.R2_PUBLIC_BASE || '').replace(/\/+$/, '');
   function fixMediaUrl(u) {
     if (!u || !mediaBase || !LEGACY_MEDIA.test(u)) return u;
