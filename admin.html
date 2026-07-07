@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=5">
-  <link rel="stylesheet" href="admin.css?v=2">
+  <link rel="stylesheet" href="admin.css?v=3">
 </head>
 <body class="admin-body">
 
@@ -52,49 +52,71 @@
         <button id="editor-close" class="editor-close" aria-label="Fechar">&times;</button>
       </header>
 
+      <div class="editor-main">
       <form id="editor-form" class="editor-body">
-        <div class="field-grid">
-          <label class="fld fld-wide">Título
-            <input name="title" required placeholder="Ex.: Casa Laurinha">
-          </label>
-          <label class="fld">Tipo
-            <select name="type">
-              <option value="casas">Casa</option>
-              <option value="apartamentos">Apartamento</option>
-              <option value="quartos">Quarto</option>
-            </select>
-          </label>
-          <label class="fld">Etiqueta (badge)
-            <input name="badge" placeholder="Casa / Apartamento / Quarto">
-          </label>
-          <label class="fld">Subtítulo
-            <input name="meta" placeholder="Ex.: Casa">
-          </label>
-          <label class="fld">Destaque
-            <input name="feature" placeholder="Ex.: 2 quartos">
-          </label>
-          <label class="fld">Capacidade
-            <input name="capacity" placeholder="Ex.: 5 hóspedes">
-          </label>
-          <label class="fld">Preço
-            <input name="price" placeholder="Vazio = Sob consulta">
-          </label>
-          <label class="fld fld-wide">Morada
-            <input name="address" placeholder="Rua, código postal, localidade">
-          </label>
-          <label class="fld">Ordem na grelha
-            <input name="position" type="number" value="0">
-          </label>
-        </div>
+        <p class="editor-intro">Preencha os campos e veja ao lado como fica no site. Ao clicar num campo, o sítio onde ele aparece fica realçado a dourado na pré-visualização.</p>
 
-        <label class="fld fld-wide">Descrição
-          <textarea name="description" rows="3" placeholder="Texto descritivo do alojamento"></textarea>
-        </label>
+        <fieldset class="block">
+          <legend>Essencial</legend>
+          <div class="field-grid">
+            <label class="fld fld-wide">Título
+              <input name="title" required placeholder="Ex.: Casa Laurinha">
+              <span class="fld-hint">O nome do alojamento — no cartão da lista e no topo da página.</span>
+            </label>
+            <label class="fld">Tipo
+              <select name="type">
+                <option value="casas">Casa</option>
+                <option value="apartamentos">Apartamento</option>
+                <option value="quartos">Quarto</option>
+              </select>
+              <span class="fld-hint">Filtro do site onde o alojamento aparece. Preenche a etiqueta automaticamente.</span>
+            </label>
+            <label class="fld">Etiqueta
+              <input name="badge" placeholder="Ex.: Casa">
+              <span class="fld-hint">Sobre a foto do cartão, por baixo do nome e no «Tipo» da página. Pode personalizar (ex.: «Apartamentos»).</span>
+            </label>
+            <label class="fld">Ordem na lista
+              <input name="position" type="number" value="0">
+              <span class="fld-hint">Número mais baixo aparece primeiro.</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="block">
+          <legend>Detalhes</legend>
+          <div class="field-grid">
+            <label class="fld">Destaque
+              <input name="feature" placeholder="Ex.: 4 quartos">
+              <span class="fld-hint">Curto — ex.: n.º de quartos ou unidades.</span>
+            </label>
+            <label class="fld">Capacidade
+              <input name="capacity" placeholder="Ex.: 8 hóspedes">
+              <span class="fld-hint">Vazio = «Sob consulta».</span>
+            </label>
+            <label class="fld">Preço
+              <input name="price" placeholder="Ex.: desde 90€/noite">
+              <span class="fld-hint">Vazio = «Sob consulta».</span>
+            </label>
+            <label class="fld fld-wide">Morada
+              <input name="address" placeholder="Rua, código postal, localidade">
+              <span class="fld-hint">Caixa «Localização» da página + botão que abre no Google Maps.</span>
+            </label>
+          </div>
+        </fieldset>
 
         <fieldset class="block">
           <legend>Tipologias</legend>
+          <p class="hint">A lista «Tipologias» da página — para alojamentos com várias opções (ex.: «Apartamento completo» + «8 hóspedes, 3 quartos com cama de casal…»).</p>
           <div id="units-list"></div>
           <button type="button" id="add-unit" class="btn-mini">+ Tipologia</button>
+        </fieldset>
+
+        <fieldset class="block">
+          <legend>Descrição</legend>
+          <label class="fld fld-wide">
+            <textarea name="description" rows="4" placeholder="Texto descritivo do alojamento"></textarea>
+            <span class="fld-hint">O texto no fim da página do alojamento.</span>
+          </label>
         </fieldset>
 
         <fieldset class="block">
@@ -114,9 +136,19 @@
             <input type="file" id="video-input" accept="video/*" multiple hidden>
             Arrastar vídeos para aqui ou clicar para escolher
           </label>
-          <p class="hint">Clips curtos (MP4/WebM). Máx. 120 MB por ficheiro.</p>
+          <p class="hint">Clips curtos (MP4/WebM). Máx. 120 MB por ficheiro. Entram no fim da galeria da página.</p>
         </fieldset>
       </form>
+
+      <aside class="editor-preview" id="editor-preview">
+        <p class="preview-title">Pré-visualização</p>
+        <p class="preview-note">Atualiza enquanto escreve — é assim que fica no site.</p>
+        <p class="preview-label">Cartão na lista</p>
+        <div id="preview-card" class="preview-stage"></div>
+        <p class="preview-label">Página do alojamento</p>
+        <div id="preview-page" class="preview-stage"></div>
+      </aside>
+      </div>
 
       <footer class="editor-foot">
         <button id="editor-cancel" type="button" class="btn-ghost">Cancelar</button>
@@ -129,6 +161,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="config.js?v=3"></script>
-  <script src="admin.js?v=5"></script>
+  <script src="admin.js?v=6"></script>
 </body>
 </html>

@@ -110,8 +110,19 @@
   document.getElementById('editor-close').addEventListener('click', closeEditor);
   document.getElementById('editor-cancel').addEventListener('click', closeEditor);
   function markDirty() { if (state) state.dirty = true; }
-  editorForm.addEventListener('input', markDirty);
-  editorForm.addEventListener('change', markDirty);
+  editorForm.addEventListener('input', function () { markDirty(); renderPreview(); });
+  editorForm.addEventListener('change', function () { markDirty(); renderPreview(); });
+
+  // Etiqueta única (preenche badge e meta na BD): sugerida pelo tipo,
+  // personalizável — só é substituída se ainda for a sugestão anterior.
+  var TYPE_LABELS = { casas: 'Casa', apartamentos: 'Apartamento', quartos: 'Quartos' };
+  editorForm.elements['type'].addEventListener('change', function () {
+    var badgeEl = editorForm.elements['badge'];
+    var cur = badgeEl.value.trim();
+    var next = TYPE_LABELS[this.value] || '';
+    if (!cur || (state && cur === state.lastTypeLabel)) badgeEl.value = next;
+    if (state) state.lastTypeLabel = next;
+  });
 
   function openEditor(l) {
     state = {
@@ -127,10 +138,11 @@
     if (!state.cover && state.gallery.length) state.cover = state.gallery[0];
 
     editorTitle.textContent = l ? 'Editar alojamento' : 'Novo alojamento';
+    var type = (l && l.type) || 'casas';
+    state.lastTypeLabel = TYPE_LABELS[type] || '';
     setVal('title', l && l.title);
-    setVal('type', (l && l.type) || 'casas');
-    setVal('badge', l && l.badge);
-    setVal('meta', l && l.meta);
+    setVal('type', type);
+    setVal('badge', l ? (l.badge || l.meta) : TYPE_LABELS[type]);
     setVal('feature', l && l.feature);
     setVal('capacity', l && l.capacity);
     setVal('price', l && l.price);
@@ -140,6 +152,7 @@
     renderUnits((l && l.units) || []);
     renderPhotos();
     renderVideos();
+    renderPreview();
 
     editor.hidden = false;
     document.body.style.overflow = 'hidden';
@@ -163,7 +176,7 @@
       '<input placeholder="Nome (ex.: Casa completa)" value="' + esc(name || '') + '">' +
       '<input placeholder="Detalhes (ex.: 5 hóspedes, 2 quartos)" value="' + esc(details || '') + '">' +
       '<button type="button" class="btn-mini danger" aria-label="Remover">×</button>';
-    row.querySelector('button').addEventListener('click', function () { row.remove(); markDirty(); });
+    row.querySelector('button').addEventListener('click', function () { row.remove(); markDirty(); renderPreview(); });
     document.getElementById('units-list').appendChild(row);
   }
   function collectUnits() {
@@ -195,6 +208,7 @@
       return '<div class="media-item pending" title="' + esc(p.name) + '"><div class="spinner"></div><span class="pending-name">' + esc(p.name) + '</span></div>';
     }).join('');
     document.getElementById('photos-grid').innerHTML = html;
+    renderPreview();
   }
   document.getElementById('photos-grid').addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
@@ -297,11 +311,14 @@
 
     var gallery = state.gallery.slice();
     var cover = state.cover || gallery[0] || '';
+    // Etiqueta única alimenta as duas colunas que o site lê (badge no cartão/«Tipo»,
+    // meta na linha por baixo do nome e no subtítulo da página).
+    var label = getVal('badge').trim() || TYPE_LABELS[getVal('type')] || '';
     var row = {
       title: title,
       type: getVal('type'),
-      badge: getVal('badge').trim(),
-      meta: getVal('meta').trim(),
+      badge: label,
+      meta: label,
       feature: getVal('feature').trim(),
       capacity: getVal('capacity').trim(),
       address: getVal('address').trim(),
@@ -335,6 +352,98 @@
     closeEditor();
     await loadListings();
   });
+
+  // ── PRÉ-VISUALIZAÇÃO ──────────────────────────
+  // Réplica ao vivo do cartão da lista e do painel de informação da página,
+  // com as classes reais do site (style.css também é carregado no admin).
+  var PV_ICONS = {
+    stay: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V21H3V10.5z"/><path d="M9 21v-7h6v7"/></svg>',
+    camera: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h4l2-3h4l2 3h4v13H4V7z"/><circle cx="12" cy="13" r="4"/></svg>',
+    chat: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>',
+    users: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+    pin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-5.25 7-12a7 7 0 0 0-14 0c0 6.75 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>'
+  };
+  var previewCard = document.getElementById('preview-card');
+  var previewPage = document.getElementById('preview-page');
+
+  function renderPreview() {
+    if (!state || !previewCard) return;
+    var title = getVal('title').trim() || 'Nome do alojamento';
+    var label = getVal('badge').trim() || TYPE_LABELS[getVal('type')] || '';
+    var feature = getVal('feature').trim();
+    var capacity = getVal('capacity').trim() || 'Sob consulta';
+    var price = getVal('price').trim() || 'Sob consulta';
+    var address = getVal('address').trim() || 'Ponte de Lima';
+    var desc = getVal('description').trim() || 'Veja a galeria completa deste alojamento e fale connosco para confirmar disponibilidade, preço e condições de reserva.';
+    var units = collectUnits();
+    var photos = state.gallery;
+    var cover = state.cover || photos[0] || '';
+    var n = photos.length;
+    var photosLbl = n + (n === 1 ? ' fotografia' : ' fotografias');
+    var strip = photos.filter(function (u) { return u !== cover; }).slice(0, 3)
+      .map(function (u) { return '<img src="' + esc(u) + '" alt="">'; }).join('');
+
+    previewCard.innerHTML =
+      '<article class="listing-card">' +
+        '<div class="listing-img-wrap">' +
+          (cover ? '<img src="' + esc(cover) + '" alt="">' : '<div class="pv-noimg">Sem fotografias</div>') +
+          '<span class="listing-type-badge" data-pv="badge">' + esc(label) + '</span>' +
+        '</div>' +
+        '<div class="listing-body">' +
+          '<h3 class="listing-name" data-pv="title">' + esc(title) + '</h3>' +
+          '<p class="listing-location" data-pv="badge">' + esc(label) + '</p>' +
+          '<div class="listing-amenities">' +
+            '<span class="listing-amenity" data-pv="feature">' + PV_ICONS.stay + esc(feature || '—') + '</span>' +
+            '<span class="listing-amenity" data-pv="capacity">' + PV_ICONS.users + esc(capacity) + '</span>' +
+            '<span class="listing-amenity">' + PV_ICONS.camera + esc(photosLbl) + '</span>' +
+          '</div>' +
+          '<p class="listing-address" data-pv="address">' + PV_ICONS.pin + esc(address) + '</p>' +
+          (strip ? '<div class="listing-photo-strip">' + strip + '</div>' : '') +
+          '<p class="listing-more">Mais informações e galeria completa</p>' +
+          '<div class="listing-footer">' +
+            '<div class="listing-price" data-pv="price">' + esc(price) + '</div>' +
+            '<span class="btn-wa-listing">' + PV_ICONS.chat + 'Reservar</span>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
+
+    previewPage.innerHTML =
+      '<div class="listing-modal-info pv-page">' +
+        '<p class="listing-modal-eyebrow">Mais informações</p>' +
+        '<h2 data-pv="title">' + esc(title) + '</h2>' +
+        '<p class="listing-modal-meta"><span data-pv="badge">' + esc(label) + '</span> · <span data-pv="feature">' + esc(feature || '—') + '</span> · <span data-pv="capacity">' + esc(capacity) + '</span></p>' +
+        '<div class="listing-modal-facts">' +
+          '<div data-pv="badge"><span>Tipo</span><strong>' + esc(label) + '</strong></div>' +
+          '<div data-pv="capacity"><span>Capacidade</span><strong>' + esc(capacity) + '</strong></div>' +
+          '<div><span>Fotografias</span><strong>' + esc(photosLbl) + '</strong></div>' +
+          '<div data-pv="price"><span>Reserva</span><strong>' + esc(price) + '</strong></div>' +
+        '</div>' +
+        '<div class="listing-modal-address" data-pv="address">' +
+          '<span>' + PV_ICONS.pin + 'Localização</span>' +
+          '<p>' + esc(address) + '</p>' +
+          '<span class="btn-map-listing">' + PV_ICONS.pin + 'Abrir no Google Maps</span>' +
+        '</div>' +
+        (units.length
+          ? '<section class="listing-modal-units-wrap" data-pv="units"><h3>Tipologias</h3><ul class="listing-modal-units">' +
+              units.map(function (u) { return '<li><strong>' + esc(u.name) + '</strong><span>' + esc(u.details) + '</span></li>'; }).join('') +
+            '</ul></section>'
+          : '') +
+        '<p class="listing-modal-copy" data-pv="description">' + esc(desc) + '</p>' +
+      '</div>';
+  }
+
+  // Focar um campo realça na pré-visualização o(s) sítio(s) onde ele aparece.
+  var PV_MAP = { title: 'title', type: 'badge', badge: 'badge', feature: 'feature', capacity: 'capacity', price: 'price', address: 'address', description: 'description' };
+  editorForm.addEventListener('focusin', function (e) {
+    var key = (e.target.closest && e.target.closest('#units-list')) ? 'units' : PV_MAP[e.target.name];
+    pvHighlight(key || null);
+  });
+  editorForm.addEventListener('focusout', function () { pvHighlight(null); });
+  function pvHighlight(key) {
+    document.querySelectorAll('#editor-preview [data-pv]').forEach(function (el) {
+      el.classList.toggle('pv-hl', !!key && el.getAttribute('data-pv') === key);
+    });
+  }
 
   // ── helpers ───────────────────────────────────
   async function uploadFile(file, kind, slug) {
