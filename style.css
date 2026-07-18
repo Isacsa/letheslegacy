@@ -1216,6 +1216,7 @@ footer {
 }
 
 .listing-more {
+  display: inline-block;
   color: var(--gold);
   font-size: 10px;
   font-weight: 600;
@@ -1223,6 +1224,8 @@ footer {
   margin: -4px 0 16px;
   text-transform: uppercase;
 }
+
+.listing-more:hover { color: var(--gold-h); }
 
 .listing-footer {
   display: flex;
@@ -1589,6 +1592,61 @@ body.modal-open { overflow: hidden; }
   padding: 13px 18px;
 }
 
+.listing-modal-actions {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-share-listing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 41px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--dark);
+  padding: 11px 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-share-listing:hover {
+  background: var(--gold);
+  color: white;
+}
+
+.btn-share-listing svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.btn-share-listing:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.listing-share-status {
+  min-height: 18px;
+  margin-top: 8px;
+  color: var(--body-c);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
 /* ── LISTINGS CONTACT STRIP ─────────────────────── */
 
 .listings-cta {
@@ -1920,6 +1978,14 @@ body.nav-open  { overflow: hidden; }
   }
 
   .listing-modal-whatsapp {
+    width: 100%;
+  }
+
+  .listing-modal-actions {
+    flex-direction: column;
+  }
+
+  .btn-share-listing {
     width: 100%;
   }
 
