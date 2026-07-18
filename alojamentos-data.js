@@ -91,7 +91,11 @@
   }
 
   function listingKey(listing) {
-    return slugify(listing.title) + (listing.id ? '--' + listing.id : '');
+    var slug = slugify(listing.title);
+    var hasDuplicate = listings.some(function (other) {
+      return other !== listing && slugify(other.title) === slug;
+    });
+    return hasDuplicate && listing.id ? slug + '--' + listing.id : slug;
   }
 
   function listingUrl(listing) {
@@ -110,13 +114,19 @@
     var requestedKey = new URL(window.location.href).searchParams.get('alojamento');
     if (!requestedKey) return null;
 
+    // Continua a aceitar os links antigos com UUID para não quebrar nada que já
+    // tenha sido enviado antes de os URLs passarem a usar apenas o nome.
     var separator = requestedKey.lastIndexOf('--');
     var requestedId = separator === -1 ? requestedKey : requestedKey.slice(separator + 2);
-    return listings.find(function (listing) {
+    var listingById = listings.find(function (listing) {
       return String(listing.id || '') === requestedId;
-    }) || listings.find(function (listing) {
-      return listingKey(listing) === requestedKey || slugify(listing.title) === requestedKey;
-    }) || null;
+    });
+    if (listingById) return listingById;
+
+    var listingsBySlug = listings.filter(function (listing) {
+      return slugify(listing.title) === requestedKey;
+    });
+    return listingsBySlug.length === 1 ? listingsBySlug[0] : null;
   }
 
   function thumbnailMarkup(listing) {
@@ -434,6 +444,10 @@
     if (!listing) {
       closeModal(false);
       return;
+    }
+    var canonicalUrl = listingUrl(listing);
+    if (window.location.href !== canonicalUrl) {
+      window.history.replaceState(window.history.state || {}, '', canonicalUrl);
     }
     openListing(listings.indexOf(listing), undefined, false);
   }
