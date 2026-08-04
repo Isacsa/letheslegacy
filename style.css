@@ -938,6 +938,20 @@ footer {
 
 .footer-col a:hover { color: var(--gold); }
 
+.footer-funding {
+  margin-top: 28px;
+  padding: 16px 20px;
+  background: #fff;
+}
+
+.footer-funding img {
+  display: block;
+  width: 100%;
+  max-width: 1600px;
+  height: auto;
+  margin: 0 auto;
+}
+
 .footer-bottom {
   margin-top: 28px;
   display: flex;
@@ -1940,6 +1954,7 @@ body.nav-open  { overflow: hidden; }
   /* ── FOOTER ── */
   footer         { padding: 40px 20px 24px; }
   .footer-top    { grid-template-columns: 1fr; gap: 32px; }
+  .footer-funding { margin-top: 24px; padding: 10px 8px; }
   .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
 
   /* ── WHATSAPP FAB ── */
