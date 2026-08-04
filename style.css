@@ -946,6 +946,8 @@ footer {
   border: 1px solid rgba(196,163,86,0.22);
 }
 
+.footer-funding a { display: block; }
+
 .footer-funding img {
   display: block;
   width: 100%;
