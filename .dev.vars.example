@@ -1,0 +1,8 @@
+# Modelo opcional para Pages Functions em desenvolvimento local.
+# Copiar para .dev.vars e preencher a anon key pública existente em config.js.
+# Sem binding MEDIA não há upload. --r2=MEDIA cria armazenamento LOCAL;
+# não torna os ficheiros acessíveis em media.letheslegacy.com.
+SUPABASE_URL="https://sdodixuwfsevnoidkldv.supabase.co"
+SUPABASE_ANON_KEY="COPIAR_ANON_PUBLICA_DE_CONFIG_JS"
+R2_PUBLIC_BASE="https://media.letheslegacy.com"
+ADMIN_EMAILS="PREENCHER_COM_EMAILS_AUTORIZADOS"
