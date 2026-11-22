@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
   <script src="transitions.js"></script>
 </head>
 <body>
@@ -40,8 +40,11 @@
 
   <!-- PAGE HERO -->
   <section class="page-hero">
-    <div class="page-hero-bg"
-         style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80')"></div>
+    <div class="page-hero-bg" aria-hidden="true">
+      <img src="assets/images/alojamentos-capa-1640.webp"
+           srcset="assets/images/alojamentos-capa-960.webp 960w, assets/images/alojamentos-capa-1640.webp 1640w"
+           sizes="100vw" width="1640" height="907" alt="" fetchpriority="high">
+    </div>
     <p class="page-hero-tag">Boutique Stays &amp; Local Hospitality</p>
     <h1 class="page-hero-title">Os Nossos Alojamentos</h1>
   </section>

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=16">
   <script src="transitions.js"></script>
 </head>
 <body>
@@ -203,10 +203,14 @@
   -->
 
   <!-- GESTÃO DE AL -->
-  <section class="gestao" id="gestao">
-    <div>
+  <section class="gestao" id="gestao" aria-labelledby="gestao-title">
+    <video class="gestao-video" width="832" height="464" muted loop playsinline preload="metadata"
+           aria-label="Vídeo de apresentação da gestão de alojamento local">
+      <source src="assets/videos/gestao-al.mp4" type="video/mp4">
+    </video>
+    <div class="gestao-panel">
       <p class="s-tag left">Gestão de Alojamento Local</p>
-      <h2 class="s-title left white sm">Rentabilize o seu <br>imóvel connosco</h2>
+      <h2 class="s-title left white sm" id="gestao-title">Rentabilize o seu <br>imóvel connosco</h2>
       <div class="s-divider left"></div>
       <p class="gestao-desc">Cuidamos do seu alojamento como se fosse nosso. Da gestão operacional à experiência do hóspede, garantimos rentabilidade máxima e tranquilidade total.</p>
       <ul class="gestao-list">
@@ -218,12 +222,6 @@
       </ul>
       <a href="https://wa.me/351927155336?text=Olá!%20Tenho%20interesse%20na%20gestão%20do%20meu%20alojamento%20local."
          target="_blank" rel="noopener noreferrer" class="btn-gold">Saber Mais</a>
-    </div>
-    <div class="gestao-visual">
-      <div class="gestao-img-wrap">
-        <img src="https://pub-aa72ada04c444be4ba353768bbc5513b.r2.dev/uploads/landingpage1.webp" alt="Gestão de alojamento local Lethes Legacy" loading="lazy" decoding="async">
-      </div>
-      <div class="gestao-accent"></div>
     </div>
   </section>
 
@@ -299,6 +297,1035 @@
       </div>
       <a href="#contactos" class="btn-gold">Falar Connosco</a>
     </div>
+  </section>
+
+  <!-- TESTEMUNHOS -->
+  <section class="testimonials" id="testemunhos" aria-labelledby="testimonials-title">
+    <p class="s-tag">Testemunhos</p>
+    <h2 class="s-title" id="testimonials-title">Palavras de quem já ficou connosco</h2>
+    <div class="s-divider"></div>
+
+    <div class="testimonials-inner">
+      <div class="testimonials-track" id="testimonials-track" role="group"
+           aria-label="Avaliações em destaque" tabindex="0">
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/platanos-amp-river-views.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote lang="en">
+            <p>Our host, Miguel, was warm and welcoming. It was great running into him at the local market.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">R</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Robin</span>
+              <span class="testimonial-country">Estados Unidos da América</span>
+              <span class="testimonial-property">Plátanos &amp; River Apartments</span>
+              <time datetime="2026-02-10">fevereiro de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/platanos-amp-river-views.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>O apartamento é mesmo de se apreciar bem espaçoso e aconchegante, é bem no centro da vila ao pé do rio […]</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">J</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Joice</span>
+              <span class="testimonial-country">Reino Unido</span>
+              <span class="testimonial-property">Plátanos &amp; River Apartments</span>
+              <time datetime="2026-02-14">fevereiro de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/platanos-amp-river-views.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Gostei muito da minha estadia. O apartamento era confortável, limpo e bem localizado.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">A</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Andrade</span>
+              <span class="testimonial-country">Portugal</span>
+              <span class="testimonial-property">Plátanos &amp; River Apartments</span>
+              <time datetime="2026-06-26">junho de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/platanos-amp-river-views.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote lang="en">
+            <p>Nice apartment in the city center that has everything you need.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">Д</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Дарья</span>
+              <span class="testimonial-country">Ucrânia</span>
+              <span class="testimonial-property">Plátanos &amp; River Apartments</span>
+              <time datetime="2024-08-05">agosto de 2024</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/platanos-amp-river-views.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Gostamos muito da estadia super confortável no centro da villa , super calmo confortável 😍</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">L</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Loureiro</span>
+              <span class="testimonial-property">Plátanos &amp; River Apartments</span>
+              <time datetime="2026-09-24">setembro de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/anoitecer-itinerante-antiga-residencial-o-garfo.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Tive a flexibilidade de alterar o horário do meu check in. Uma grata cortesia.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">R</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Rosangela</span>
+              <span class="testimonial-property">Anoitecer Itinerante – Vintage Bedrooms</span>
+              <time datetime="2026-07-25">julho de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/casa-de-aldeia-para-alojamento.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote lang="en">
+            <p>The house was brilliant – you really feel at home there. It’s comfortable, practical, light and in a quiet location.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">P</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Paloma</span>
+              <span class="testimonial-property">Casa da Venda</span>
+              <time datetime="2026-08-18">agosto de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/944769888911668864" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote>
+            <p>Como se estivéssemos em nossa casa. Tudo muito limpo e organizado. Excelente a comunicação.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">L</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Leticia</span>
+              <span class="testimonial-property">Plátanos &amp; River – Apartamento C</span>
+              <time datetime="2026-04">abril de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/911610918403644812" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="en">
+            <p>They did a wonderful job keeping us all together.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">N</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Nicole</span>
+              <span class="testimonial-property">Plátanos &amp; River – Apartamento B</span>
+              <time datetime="2026-05">maio de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/36165803" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="es">
+            <p>Todo perfecto, rápido y cómodo. No sé puede pedir más por el precio</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">R</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Ricardo</span>
+              <span class="testimonial-property">Casa do Foral – Suite Brutus</span>
+              <time datetime="2026-05">maio de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/1428955043430582789" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote>
+            <p>Espaço agradável e acolhedor. Ideal para quem tem animais de estimação e quer fazer uma escapadinha.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">J</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">João</span>
+              <span class="testimonial-property">Casa Laurinha</span>
+              <time datetime="2026-10">outubro de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/1427600973622809577" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="en">
+            <p>Very well located accomodation in Ponte de Lima, you can access everything on foot, museum, river, restaurants, shops, city center...</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">D</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Davy</span>
+              <span class="testimonial-property">Casa do Foral – Apartamento Rio Lima</span>
+              <time datetime="2026-08">agosto de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/757421512149543937" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="es">
+            <p>Las vistas al mar impresionantes. Las tres habitaciones grandes y cómodas.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">M</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Miguel</span>
+              <span class="testimonial-property">Casa da Amorosa</span>
+              <time datetime="2026-08">agosto de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/platanos-amp-river-views.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>O apartamento é muito bonito e confortável. Fica localizado no centro o que permite estar próximo dos restaurantes e comercio.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">N</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Natalia</span>
+              <span class="testimonial-property">Plátanos &amp; River Apartments</span>
+              <time datetime="2026-07-29">julho de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/anoitecer-itinerante-antiga-residencial-o-garfo.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Limpo, silencioso e foram queridos desde antes da estadia</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">G</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Gabrielle</span>
+              <span class="testimonial-property">Anoitecer Itinerante – Vintage Bedrooms</span>
+              <time datetime="2026-06-13">junho de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/casa-de-aldeia-para-alojamento.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote lang="es">
+            <p>La ubicación es excepcional, la piscina muy limpia y la casa también, totalmente recomendable.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">J</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Julio</span>
+              <span class="testimonial-property">Casa da Venda</span>
+              <time datetime="2025-08-05">agosto de 2025</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/944769888911668864" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="es">
+            <p>Miguel muy amable y pendiente de todo, repetiremos!</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">E</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Eduardo</span>
+              <span class="testimonial-property">Plátanos &amp; River – Apartamento C</span>
+              <time datetime="2026-07">julho de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/911610918403644812" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="en">
+            <p>The apartment was great and had everything we needed. It was very modern, clean and spacious as well.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">M</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Myles</span>
+              <span class="testimonial-property">Plátanos &amp; River – Apartamento B</span>
+              <time datetime="2024-06">junho de 2024</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/36165803" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote>
+            <p>Espaço acolhedor, promete o esperado e com uma localização óptima...</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">P</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Pedro</span>
+              <span class="testimonial-property">Casa do Foral – Suite Brutus</span>
+              <time datetime="2025-08">agosto de 2025</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/1428955043430582789" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="en">
+            <p>The pool was in a beautiful spot with amazing views. Location was peaceful and rural […]</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">A</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Ali</span>
+              <span class="testimonial-property">Casa Laurinha</span>
+              <time datetime="2026-07">julho de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/1427600973622809577" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote>
+            <p>Super prestáveis. Sítio muito bem localizado</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">I</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Inês</span>
+              <span class="testimonial-property">Casa do Foral – Apartamento Rio Lima</span>
+              <time datetime="2026-08">agosto de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/757421512149543937" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="es">
+            <p>Antonio es un anfitrión muy amable y preocupado por sus huéspedes.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">M</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Mª Begoña</span>
+              <span class="testimonial-property">Casa da Amorosa</span>
+              <time datetime="2025-08">agosto de 2025</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/platanos-amp-river-views.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Aparentemente super limpou, localizado maravilhosa perto de café restaurantes, gostei bastante do local</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">B</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Bruna</span>
+              <span class="testimonial-property">Plátanos &amp; River Apartments</span>
+              <time datetime="2026-03-08">março de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/anoitecer-itinerante-antiga-residencial-o-garfo.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>De tudo, da organização do atendimento da limpeza bem localizado voltaria mais vezes excelente.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">D</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Danilo</span>
+              <span class="testimonial-property">Anoitecer Itinerante – Vintage Bedrooms</span>
+              <time datetime="2026-05-21">maio de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/casa-de-aldeia-para-alojamento.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Simpatia e hospitalidade que nos fazem sentir em casa!</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">J</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Jorge</span>
+              <span class="testimonial-property">Casa da Venda</span>
+              <time datetime="2025-07-19">julho de 2025</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/944769888911668864" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote>
+            <p>Estadia muito agradável, imóvel bem localizado, decoração e apresentação impecável.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">A</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Ana</span>
+              <span class="testimonial-property">Plátanos &amp; River – Apartamento C</span>
+              <time datetime="2026-04">abril de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/911610918403644812" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="he" dir="rtl">
+            <p>מאוד נהנינו בנכס. ממוקם במקום מצויין ממש על הנהר בשדרה מקסימה.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">ר</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">רחלי</span>
+              <span class="testimonial-property">Plátanos &amp; River – Apartamento B</span>
+              <time datetime="2025-10">outubro de 2025</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/36165803" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="fr">
+            <p>Tout est accessible à pied, il y a des cafés et des restaurants dans les alentours.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">A</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Anthony</span>
+              <span class="testimonial-property">Casa do Foral – Suite Brutus</span>
+              <time datetime="2025-08">agosto de 2025</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/1428955043430582789" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="nl">
+            <p>We hadden een super fijne week in het vakantiehuisje! Absolute pluspunten: brandschoon, geweldig uitzicht, goed uitgeruste keuken en badkamer(s) […]</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">T</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Tom</span>
+              <span class="testimonial-property">Casa Laurinha</span>
+              <time datetime="2026-04">abril de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/1427600973622809577" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="es">
+            <p>El alojamiento cómodo y cocina muy bien equipada. Disfrutamos mucho desayunando en el balcón.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">A</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Alma</span>
+              <span class="testimonial-property">Casa do Foral – Apartamento Rio Lima</span>
+              <time datetime="2026-07">julho de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/platanos-amp-river-views.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Da localização, do conforto do apartamento, do facto de ter ar condicionado e de estar bem equipado e mobilado.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">J</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">José</span>
+              <span class="testimonial-property">Plátanos &amp; River Apartments</span>
+              <time datetime="2025-08-21">agosto de 2025</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/anoitecer-itinerante-antiga-residencial-o-garfo.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Tudo muito limpo, organizado! A Luciana é muito simpática, profissional… e nos recebeu muito bem!</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">P</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Patricia</span>
+              <span class="testimonial-property">Anoitecer Itinerante – Vintage Bedrooms</span>
+              <time datetime="2026-05-17">maio de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/casa-de-aldeia-para-alojamento.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Passando pela piscina aquecida que adorámos e terminando na simpatia do doutor juiz que não deixou que nos faltasse nada.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">L</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Lage</span>
+              <span class="testimonial-property">Casa da Venda</span>
+              <time datetime="2024-09-17">setembro de 2024</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/944769888911668864" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="en">
+            <p>Great spot close to everything. Will be back</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">J</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Joseph</span>
+              <span class="testimonial-property">Plátanos &amp; River – Apartamento C</span>
+              <time datetime="2026-05">maio de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/911610918403644812" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="es">
+            <p>Es la tercera vez que nos alojamos en este piso y cómo siempre todo perfecto.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">A</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Antia</span>
+              <span class="testimonial-property">Plátanos &amp; River – Apartamento B</span>
+              <time datetime="2024-12">dezembro de 2024</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/36165803" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="es">
+            <p>Nos hospedamos 4 noches y estuvimos muy a gusto en esta habitación! Las fotos se corresponden con la realidad.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">A</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Alby</span>
+              <span class="testimonial-property">Casa do Foral – Suite Brutus</span>
+              <time datetime="2025-07">julho de 2025</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/1428955043430582789" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote>
+            <p>Passámos uns dias maravilhosos em Casa Laurinha. Está localizada numa zona rural muito bonita e muito tranquila […]</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">S</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Sel</span>
+              <span class="testimonial-property">Casa Laurinha</span>
+              <time datetime="2026-04">abril de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/platanos-amp-river-views.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Confortável e um trato incrível! Endereço justo ao lado do rio lima, muito bom mesmo, tornaria a vir com os olhos fechados😇</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">E</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Erik</span>
+              <span class="testimonial-property">Plátanos &amp; River Apartments</span>
+              <time datetime="2024-12-27">dezembro de 2024</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/anoitecer-itinerante-antiga-residencial-o-garfo.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Fiquei super surpreendida com a limpeza do quarto, principalmente a casa de banho...</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">C</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Catarina</span>
+              <span class="testimonial-property">Anoitecer Itinerante – Vintage Bedrooms</span>
+              <time datetime="2026-03-26">março de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/casa-de-aldeia-para-alojamento.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Voltaremos para este paraiso.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">C</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Cerqueira</span>
+              <span class="testimonial-property">Casa da Venda</span>
+              <time datetime="2024-08-27">agosto de 2024</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/944769888911668864" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="en">
+            <p>Really comfortable place in an awesome location!! One minute walk to the river and close to old city and restaurants.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">S</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Scott</span>
+              <span class="testimonial-property">Plátanos &amp; River – Apartamento C</span>
+              <time datetime="2026-03">março de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/911610918403644812" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote>
+            <p>Gostei muito da estadia, o apartamento é óptimo para passar uns dias.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">M</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Marcio</span>
+              <span class="testimonial-property">Plátanos &amp; River – Apartamento B</span>
+              <time datetime="2025-11">novembro de 2025</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/1428955043430582789" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="nl">
+            <p>Miguel reageerde altijd heel snel, was zeer behulpzaam en heel vriendelijk. Een geweldig huis in de bergen met prachtige uitzicht.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">N</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Nataly</span>
+              <span class="testimonial-property">Casa Laurinha</span>
+              <time datetime="2026-03">março de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/platanos-amp-river-views.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote lang="es">
+            <p>Estamos sorprendidos de lo espacioso que resultó ser el apartamento.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">B</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Begoña</span>
+              <span class="testimonial-property">Plátanos &amp; River Apartments</span>
+              <time datetime="2024-11-10">novembro de 2024</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/anoitecer-itinerante-antiga-residencial-o-garfo.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Fizemos uma viagem em família e tivemos uma experiência 5 estrelas. O funcionários foram prestáveis e simpáticos. Estava tudo impecável.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">I</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Iolanda</span>
+              <span class="testimonial-property">Anoitecer Itinerante – Vintage Bedrooms</span>
+              <time datetime="2025-08-04">agosto de 2025</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/casa-de-aldeia-para-alojamento.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Quanto ao alojamento propriamente dito: não podíamos ter tido melhor anfitrião - muito afável, simpático e disponível.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">N</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Nuno</span>
+              <span class="testimonial-property">Casa da Venda</span>
+              <time datetime="2024-06-17">junho de 2024</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/944769888911668864" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="fr">
+            <p>Le logement est très bien situé. Le stationnement est très facile au pied de l’appartement.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">P</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Paulo</span>
+              <span class="testimonial-property">Plátanos &amp; River – Apartamento C</span>
+              <time datetime="2025-09">setembro de 2025</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/anoitecer-itinerante-antiga-residencial-o-garfo.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Do apoio e simpatia em geral da equipa e toda a disponibilidade para ajudar no que fosse necessário […]</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">J</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">João</span>
+              <span class="testimonial-property">Anoitecer Itinerante – Vintage Bedrooms</span>
+              <time datetime="2024-11-26">novembro de 2024</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--airbnb" href="https://www.airbnb.pt/rooms/944769888911668864" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/airbnb-logo.svg" width="22" height="22" alt="Airbnb">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>5/5</span>
+          </div>
+          <blockquote lang="nl">
+            <p>Vriendelijke host, die reageert in zeer korte tijd. Er zijn mooie wandelingen te maken in de omgeving.</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">C</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Clementien</span>
+              <span class="testimonial-property">Plátanos &amp; River – Apartamento C</span>
+              <time datetime="2025-06">junho de 2025</time>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card">
+          <div class="testimonial-top">
+            <a class="testimonial-logo testimonial-logo--booking" href="https://www.booking.com/hotel/pt/anoitecer-itinerante-antiga-residencial-o-garfo.pt-pt.html#tab-reviews" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/booking-logo.svg" width="22" height="22" alt="Booking.com">
+            </a>
+            <span class="testimonial-score"><span aria-hidden="true">★</span>10/10</span>
+          </div>
+          <blockquote>
+            <p>Higiene, Atendimento, o facto de ter estacionamento</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-initial" aria-hidden="true">N</span>
+            <div class="testimonial-guest">
+              <span class="testimonial-name">Nathalie</span>
+              <span class="testimonial-property">Anoitecer Itinerante – Vintage Bedrooms</span>
+              <time datetime="2026-06-15">junho de 2026</time>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <div class="testimonials-controls" hidden>
+        <button type="button" class="testimonials-prev" aria-label="Ver testemunhos anteriores" aria-controls="testimonials-track">
+          <span aria-hidden="true">←</span>
+        </button>
+        <span class="testimonials-position" aria-live="polite" aria-atomic="true"></span>
+        <button type="button" class="testimonials-next" aria-label="Ver testemunhos seguintes" aria-controls="testimonials-track">
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </div>
+
+    <a href="alojamentos.html" class="btn-gold">Ver alojamentos</a>
   </section>
 
   <!-- CONTACTOS -->
@@ -400,6 +1427,63 @@
           document.body.classList.remove('nav-open');
         });
       });
+    })();
+
+    (function () {
+      const video = document.querySelector('.gestao-video');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
+
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.intersectionRatio >= 0.25) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      }, { threshold: 0.25 });
+      observer.observe(video);
+    })();
+
+    (function () {
+      const track = document.querySelector('.testimonials-track');
+      const controls = document.querySelector('.testimonials-controls');
+      const previous = controls.querySelector('.testimonials-prev');
+      const next = controls.querySelector('.testimonials-next');
+      const position = controls.querySelector('.testimonials-position');
+
+      function getPage() {
+        const [firstCard, secondCard] = track.children;
+        const total = track.children.length;
+        const step = secondCard
+          ? secondCard.getBoundingClientRect().left - firstCard.getBoundingClientRect().left
+          : track.clientWidth;
+        const visible = step > 0 ? Math.min(total, Math.max(1, Math.round(track.clientWidth / step))) : total;
+        const first = step > 0 ? Math.max(0, Math.min(total - visible, Math.round(track.scrollLeft / step))) : 0;
+        return { step, first, visible, total };
+      }
+
+      function updateControls() {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        controls.hidden = maxScroll <= 1;
+        previous.disabled = track.scrollLeft <= 1;
+        next.disabled = track.scrollLeft >= maxScroll - 1;
+        const { first, visible, total } = getPage();
+        const range = visible === 1 ? `${first + 1}` : `${first + 1}–${first + visible}`;
+        const label = `${range} de ${total}`;
+        if (position.textContent !== label) position.textContent = label;
+      }
+
+      function moveByPage(direction) {
+        const { step, first, visible, total } = getPage();
+        const target = Math.max(0, Math.min(total - visible, first + direction * visible));
+        track.scrollTo({ left: target * step });
+      }
+
+      previous.addEventListener('click', () => moveByPage(-1));
+      next.addEventListener('click', () => moveByPage(1));
+      track.addEventListener('scroll', updateControls, { passive: true });
+      window.addEventListener('resize', updateControls);
+      updateControls();
     })();
   </script>
 

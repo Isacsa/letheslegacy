@@ -551,6 +551,223 @@ img { display: block; max-width: 100%; }
   line-height: 1.6;
 }
 
+/* ── TESTEMUNHOS ────────────────────────────────── */
+
+.testimonials {
+  background: radial-gradient(ellipse at top, #fdfaf5 10%, #f0e7d9 100%);
+  border-top: 1px solid var(--border);
+  padding: clamp(56px, 7vw, 96px) clamp(20px, 4vw, 48px);
+  scroll-margin-top: 80px;
+  text-align: center;
+}
+
+.testimonials-inner {
+  max-width: 1180px;
+  margin: 0 auto 32px;
+}
+
+.testimonials .s-divider {
+  margin-bottom: 32px;
+}
+
+.testimonials-track {
+  --testimonial-gap: 20px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 2 * var(--testimonial-gap)) / 3);
+  gap: var(--testimonial-gap);
+  padding: 4px 0 18px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.testimonials-track:has(+ .testimonials-controls:not([hidden])) {
+  scrollbar-width: none;
+}
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(22px, 2.5vw, 32px);
+  background: #fffdfa;
+  border: 1px solid #e8ddcc;
+  border-radius: 18px;
+  box-shadow: 0 5px 15px rgba(59, 38, 17, 0.07);
+  scroll-snap-align: start;
+  text-align: left;
+}
+
+.testimonial-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.testimonial-logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #edf3fa;
+}
+
+.testimonial-logo--airbnb {
+  background: #fceff0;
+}
+
+.testimonial-logo--booking img {
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+}
+
+.testimonial-logo:hover {
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+.testimonial-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #f4ebd8;
+  color: var(--dark);
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.testimonial-score [aria-hidden] {
+  color: #805b24;
+  font-size: 14px;
+}
+
+.testimonial-card blockquote {
+  margin: 0 0 24px;
+  color: var(--dark);
+  font: 600 clamp(21px, 2vw, 25px) / 1.25 'Cormorant Garamond', Georgia, serif;
+  text-align: start;
+}
+
+.testimonial-card blockquote p::before {
+  content: open-quote;
+}
+
+.testimonial-card blockquote p::after {
+  content: close-quote;
+}
+
+.testimonial-card figcaption {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 11px;
+  margin-top: auto;
+  padding-top: 17px;
+  border-top: 1px solid #e8ddcc;
+}
+
+.testimonial-initial {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #eee4d5;
+  color: #624927;
+  font: 700 21px / 1 'Cormorant Garamond', Georgia, serif;
+}
+
+.testimonial-guest {
+  display: grid;
+  gap: 3px;
+}
+
+.testimonial-name {
+  color: var(--dark);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.testimonial-country,
+.testimonial-property,
+.testimonial-guest time {
+  color: var(--body-c);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.testimonial-property {
+  font-weight: 500;
+}
+
+.testimonials-controls:not([hidden]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.testimonials-position {
+  min-width: 92px;
+  color: var(--body-c);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.testimonials-controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: #fffdfa;
+  color: var(--dark);
+  font: inherit;
+  cursor: pointer;
+}
+
+.testimonials-controls button:not(:disabled):hover {
+  background: var(--cream);
+  border-color: var(--gold);
+}
+
+.testimonials-controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.testimonials-track:focus-visible,
+.testimonial-logo:focus-visible,
+.testimonials-controls button:focus-visible {
+  outline: 2px solid var(--body-c);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1023px) {
+  .testimonials-track { grid-auto-columns: calc((100% - var(--testimonial-gap)) / 2); }
+}
+
+@media (max-width: 767px) {
+  .testimonials-track { grid-auto-columns: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-track { scroll-behavior: auto; }
+}
+
 /* ── DESTINOS ───────────────────────────────────── */
 
 .destinos {
@@ -625,20 +842,36 @@ img { display: block; max-width: 100%; }
 /* ── GESTÃO DE AL ───────────────────────────────── */
 
 .gestao {
+  --gestao-nav-height: 80px;
+  position: relative;
+  min-height: calc(100vh - var(--gestao-nav-height));
+  min-height: calc(100svh - var(--gestao-nav-height));
+  scroll-margin-top: var(--gestao-nav-height);
+  padding: clamp(32px, 6vw, 80px) clamp(20px, 7vw, 112px);
   background: var(--dark);
-  padding: 100px 80px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
   align-items: center;
+}
+
+.gestao-panel {
+  position: relative;
+  width: min(100%, 530px);
+  padding: clamp(24px, 4vw, 48px);
+  background: rgba(26, 20, 16, 0.86);
+  border: 1px solid rgba(196, 163, 86, 0.48);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.24);
+}
+
+.gestao-panel .s-divider {
+  margin-bottom: 24px;
 }
 
 .gestao-desc {
   font-size: 15px;
   font-weight: 300;
-  color: rgba(255,255,255,0.68);
+  color: rgba(255,255,255,0.88);
   line-height: 1.85;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
 }
 
 .gestao-list {
@@ -646,13 +879,13 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-direction: column;
   gap: 11px;
-  margin-bottom: 44px;
+  margin-bottom: 32px;
 }
 
 .gestao-list li {
   font-size: 13px;
   font-weight: 400;
-  color: rgba(255,255,255,0.78);
+  color: rgba(255,255,255,0.92);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -681,24 +914,12 @@ img { display: block; max-width: 100%; }
 
 .btn-gold:hover { background: var(--gold-h); }
 
-.gestao-visual { position: relative; }
-
-.gestao-img-wrap {
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  background: linear-gradient(135deg, #3a2a1a, #6a4a2a, #2a1a0a);
-}
-
-.gestao-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-
-.gestao-accent {
+.gestao-video {
   position: absolute;
-  bottom: -18px;
-  left: -18px;
-  width: 100px;
-  height: 100px;
-  border: 2px solid var(--gold);
-  pointer-events: none;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ── EXPERIÊNCIAS ───────────────────────────────── */
@@ -1009,9 +1230,32 @@ footer {
 .page-hero-bg {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.22;
+}
+
+.page-hero-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 56%;
+}
+
+.page-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 20, 16, 0.68),
+    rgba(26, 20, 16, 0.56) 26%,
+    rgba(26, 20, 16, 0.64) 52%,
+    rgba(26, 20, 16, 0.28)
+  );
+}
+
+.page-hero-tag,
+.page-hero-title {
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.65);
 }
 
 .page-hero-tag {
@@ -1753,8 +1997,6 @@ body.nav-open  { overflow: hidden; }
   .destinos-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
   .destino-card  { min-height: 260px; }
 
-  .gestao { padding: 72px 48px; gap: 60px; }
-
   .sobre { padding: 72px 48px; gap: 48px; }
 
   .listings      { padding: 48px 40px 64px; }
@@ -1928,12 +2170,10 @@ body.nav-open  { overflow: hidden; }
   .destino-overlay { padding: 18px 20px; }
 
   /* ── GESTÃO ── */
-  .gestao          { grid-template-columns: 1fr; padding: 48px 20px; gap: 40px; }
-  .gestao-visual   { order: -1; }
-  .gestao-img-wrap { aspect-ratio: 4/5; }
-  .gestao-accent   { display: none; }
-  .gestao-desc     { margin-bottom: 24px; }
-  .gestao-list     { margin-bottom: 32px; }
+  .gestao {
+    --gestao-nav-height: 60px;
+    justify-items: center;
+  }
 
   /* ── EXPERIÊNCIAS ── */
   .experiencias { padding: 48px 16px; }
